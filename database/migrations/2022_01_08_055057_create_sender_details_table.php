@@ -15,13 +15,13 @@ class CreateSenderDetailsTable extends Migration
     {
         Schema::create('sender_details', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('type');
-            $table->string('address');
-            $table->string('distt');
-            $table->string('city');
-            $table->string('pin_code');
-            $table->string('telephone_no');
+            $table->string('name')->nullable();
+            $table->string('type')->nullable();
+            $table->string('address')->nullable();
+            $table->string('distt')->nullable();
+            $table->string('city')->nullable();
+            $table->string('pin_code')->nullable();
+            $table->string('telephone_no')->nullable();
             $table->timestamps();
         });
     }

@@ -3,7 +3,14 @@
 @section('title', 'Create New')
 
 @section('content')
-
+<style>
+.ui-menu {
+    width: 300px !important;
+    background: #ccc !important;
+    padding: 10px !important;
+    list-style-type: none;
+}
+</style>
 
 
 
@@ -68,9 +75,12 @@
 
 				<!--begin::Card body-->
 
-				<div class="card-body pt-0" style="min-height:500px;">
+				<div class="card-body pt-0" style="min-height:500px; width: auto">
+                
+
 
 				<div class="container mt-5">
+                <h3><b><u>Address Section</u></b></h3>
   <form id="newSender" method="post">
       @csrf
       <div class="row">
@@ -137,7 +147,32 @@
         <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
     </div>
-	
+    <h3><b><u>Courier Details</u></b></h3>
+	<div class="row">
+    <div class="col">
+	 <div class="fv-row mb-10 col-md-16">
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2">Docket No.</label>
+        <!--end::Label-->
+
+        <!--begin::Input-->
+        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <!--end::Input-->
+    </div>
+</div>
+<div class="col">
+	 <!--begin::Input group-->
+	 <div class="fv-row mb-10 col-md-12">
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2">Docket Date</label>
+        <!--end::Label-->
+
+        <!--begin::Input-->
+        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <!--end::Input-->
+    </div>
+</div>
+</div>
 
 	   <!--begin::solid autosize textarea-->
     <label for="" class="form-label">Document Details</label>
@@ -145,10 +180,11 @@
 	<br>
 
 <!--end::solid autosize textarea-->
-       
+<div class="row">
+   <div class="col"> 
         <label for="" class="form-label">Courier Name</label>
         <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" > 
-		<option  disabled>--select--</option>
+		<option>select..</option>
 		@foreach($couriers as $courier)
             <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
 		@endforeach
@@ -159,6 +195,20 @@
 		<div id="ifYes" style="display: none;">
 		<input type="text" id="other" name="other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
 </div><br>
+</div>
+<div class="col"> 
+<div class="fv-row mb-10 col-md-16">
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2">Given To</label>
+        <!--end::Label-->
+
+        <!--begin::Input-->
+        <input type="text" id="given_to" name="given_to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <!--end::Input-->
+    </div>
+</div>
+</div>
+
 		<button type="submit" class="btn btn-danger">Add</button>
     </div>
 </form>		

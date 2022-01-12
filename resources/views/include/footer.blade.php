@@ -66,7 +66,7 @@
            $('#city').val(ui.item.city);
            $('#distt').val(ui.item.distt);
            $('#pin_code').val(ui.item.pin_code);
-           $('#telephone_no').val(ui.item.pin_code);
+           $('#telephone_no').val(ui.item.num);
            return false;
         }
       });

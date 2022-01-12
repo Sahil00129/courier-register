@@ -114,12 +114,14 @@ th {
 				<!--end::Card body-->
 			</div>
 			<!--end::Card-->
-		</div>
+		</div> 
 		<!--end::Container-->
 	</div>
 	<!--end::Post-->
 </div>
-
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
 <script>
 $(document).ready( function() {
     $('#example').DataTable( {

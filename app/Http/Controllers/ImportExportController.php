@@ -36,8 +36,9 @@ class ImportExportController extends Controller
         
         }catch (\Exception $e) {
           $response['success'] = false;
-          $response['messages'] = 'New Data Import successfully';
-          return Response::json($response);
+          $response['messages'] = 'something wrong';
+          echo'<pre>'; print_r($e); die;
+          return Response::json($e);
         }
 
       }elseif($_POST['import_type'] == 2){
@@ -52,7 +53,7 @@ class ImportExportController extends Controller
        
      }catch (\Exception $e) {
        $response['success'] = false;
-       $response['messages'] = 'New Data Import successfully';
+       $response['messages'] = 'something wrong';
        return Response::json($response);
      }
 

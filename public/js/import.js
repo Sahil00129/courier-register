@@ -74,8 +74,9 @@ $(document).ready(function (e) {
         }
       
       else{
-      swal("success", data.messages, "success");
+      swal("error", data.messages, "error");
       }
+      location.reload();
       }
   });
   });

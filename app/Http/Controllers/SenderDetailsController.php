@@ -77,22 +77,27 @@ class SenderDetailsController extends Controller
         $sender->city = $request->city;
         $sender->distt = $request->distt;
         $sender->pin_code = $request->pin_code;
+        $sender->docket_no = $request->docket_no;
+        $sender->docket_date = $request->docket_date;
         $sender->document = $request->document;
         $sender->telephone_no = $request->telephone_no;
+        $sender->given_to = $request->given_to;
         $sender->courier_name = $request->slct;
           
 
          if($request->slct == "other"){
           $sender->courier_name = $request->other;
+          $cmpny = new CourierCompany;
+          $cmpny->courier_name = $request->other;
+          $cmpny->save();
 
          }else{
           $sender->courier_name = $request->slct;
+          $sender->save();
          } 
-        $sender->save();
 
-        $cmpny = new CourierCompany;
-        $cmpny->courier_name = $request->other;
-        $cmpny->save();
+
+       
         //echo'<pre>'; print_r($request->other); die;
 
         $response['success'] = true;

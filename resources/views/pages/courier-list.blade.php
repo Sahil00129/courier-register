@@ -53,6 +53,16 @@ th {
 .form-inline button:hover {
   background-color: royalblue;
 }
+#scroll{ 
+overflow-y:scroll;
+}
+
+#bottom{
+    position:fixed;
+    top:102px;
+    left:0;
+ width:100%;   
+}
 </style>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<!--begin::Toolbar-->
@@ -89,13 +99,18 @@ th {
 			<!--begin::Card-->
 			<div class="card">
 				<!--begin::Card body-->
-				<div class="card-body pt-0" style="min-height:500px;">
+				<div class="card-body pt-0" style="min-height:500px; width:auto;">
+				<div id="scroll">
 				<table class="table align-middle table-row-dashed fs-6 gy-5" id="new">
 						<!--begin::Table head-->
 						<thead>
 							<!--begin::Table row-->
 							<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+							<th class="min-w-125px">Date of Receipt</th>
+								<th class="min-w-125px">Docket No</th>
+								<th class="min-w-125px">Docket Date</th>
                                 <th class="min-w-125px">Name</th>
+								<th class="min-w-125px">Type</th>
 								<th class="min-w-125px">Address</th>
                                 <th class="min-w-125px">City</th>
                                 <th class="min-w-125px">Distt</th>
@@ -103,6 +118,7 @@ th {
 								<th class="min-w-125px">Telephone No</th>
 								<th class="min-w-125px">Document Details</th>
 								<th class="min-w-125px">Courier Company</th>
+								<th class="min-w-125px">Given To</th>
 							</tr>
 							<!--end::Table row-->
 						</thead>
@@ -116,8 +132,16 @@ th {
 								$n = $l[0];
 								$c = $l[1];
 							//	echo'<pre>'; print_r($l); die;
-						?>
-							<tr>
+							   $date = $cmpny['created_at'];
+                               $createDate = new DateTime($date);
+                               $strip = $createDate->format('d-m-y');
+							   
+                              // print_r($strip); die;
+             						?>
+             			<tr>
+							<td>{{$strip}}</td>
+							<td>{{$cmpny->docket_no}}</td>
+							<td>{{$cmpny->docket_date}}</td>
                             <td>{{$n = $l[0]}}</td>
 							<td>{{$c = $l[1]}}</td>
 							<td>{{$cmpny->address}}</td>
@@ -127,23 +151,26 @@ th {
 							<td>{{$cmpny->telephone_no}}</td>
 							<td>{{$cmpny->document}}</td>
 							<td>{{$cmpny->courier_name}}</td>
+							<td>{{$cmpny->given_to}}</td>
                            </tr>
                          @endforeach
 						</tbody>
 						<!--end::Table body-->
 					</table>
+<div id="bottom">Paging</div>
+</div>
 					<!--end::Table-->
 				</div>
 				<!--end::Card body-->
 			</div>
 			<!--end::Card-->
-		</div>
+		</div> 
 		<!--end::Container-->
 	</div>
 	<!--end::Post-->
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
 <script>
 $(document).ready( function() {

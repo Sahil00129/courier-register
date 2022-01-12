@@ -31,9 +31,7 @@ class BulkImport implements ToModel,WithHeadingRow
                 'pin_code' =>$row['pin_code'],
                 'telephone_no' =>$row['telephone_no'],
             ]);
-           }else{
-              return $e;
-           }
+        }
 
             
        }
@@ -48,8 +46,7 @@ class BulkImport implements ToModel,WithHeadingRow
                 'courier_name'  => $row['courier_name']
             ]);
                
-         }else{
-              return $e;
+         
          } 
 
     }
