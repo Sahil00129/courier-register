@@ -17,6 +17,12 @@ select.cfilter {
 th {
     color: #000 !important;
 }
+.dt-buttons{
+	margin-top: 20px;
+}
+.paginate_button{
+	margin-left: 8px;
+}
 </style>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<!--begin::Toolbar-->
@@ -84,8 +90,8 @@ th {
                                 <th class="min-w-125px">Name</th>
 								<th class="min-w-125px">Type</th>
 								<th class="min-w-125px">Address</th>
-                                <th class="min-w-125px">City</th>
                                 <th class="min-w-125px">Distt</th>
+                                <th class="min-w-125px">City</th>
                                 <th class="min-w-125px">Pin Code</th>
 								<th class="min-w-125px">Telephone No</th>
 							</tr>
