@@ -101,7 +101,8 @@
 					<!--begin::Notifications-->
 					<div class="d-flex align-items-stretch">
 						<!--begin::Menu wrapper-->
-						<div class="topbar-item position-relative px-3 px-lg-5" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">	<i class="bi bi-app-indicator fs-3"></i>
+						<div class="topbar-item position-relative px-3 px-lg-5" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom"><a href="{{ url('logout') }}" class="menu-link px-5"><i class="bi bi-app-indicator fs-3" style="color:#fff;">
+								</i><span style="color:#fff;">Logout</span></a>
 						</div>
 						<!--end::Menu wrapper-->
 					</div>
@@ -110,6 +111,7 @@
 					<div class="d-flex align-items-stretch" id="kt_header_user_menu_toggle">
 						<!--begin::Menu wrapper-->
 						<div class="topbar-item cursor-pointer symbol px-3 px-lg-5 me-n3 me-lg-n5 symbol-30px symbol-md-35px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
+						
 						
 						</div>
 						<!--begin::Menu-->
