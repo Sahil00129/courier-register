@@ -75,12 +75,12 @@
 
 				<!--begin::Card body-->
 
-				<div class="card-body pt-0" style="min-height:500px; width: auto">
+				<div class="card-body pt-0" style="min-height:500px; width: auto; margin-top:21px;">
                 
 
 
 				<div class="container mt-5">
-                <h3><b><u>Address Section</u></b></h3>
+                <h3><b><u>Sender Details</u></b></h3>
   <form id="newSender" method="post">
       @csrf
       <div class="row">
@@ -98,12 +98,12 @@
 </div>
 <div class="col">
        <label for="" class="form-label">Address</label>
-    <textarea id="address" name="address" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;"></textarea>
-</div>
+    <textarea id="address" name="address" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1"></textarea>
 </div>
 
 
-    <div class="row">
+
+    
     <div class="col">
 	 <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
@@ -115,6 +115,8 @@
         <!--end::Input-->
     </div>
 </div>
+</div>
+<div class="row">
 <div class="col">
 	 <!--begin::Input group-->
 	 <div class="fv-row mb-10 col-md-12">
@@ -138,7 +140,7 @@
         <!--end::Input-->
     </div>
 </div>
-</div>
+
 <div class="fv-row mb-10 col-md-4">
         <!--begin::Label-->
         <label class="fw-bold fs-6 mb-2">Telephone No.</label>
@@ -147,6 +149,7 @@
         <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
     </div>
+</div>
     <h3><b><u>Courier Details</u></b></h3>
 	<div class="row">
     <div class="col">
@@ -156,7 +159,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
 </div>
@@ -168,7 +171,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
 </div>

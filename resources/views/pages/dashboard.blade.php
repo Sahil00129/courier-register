@@ -135,7 +135,7 @@
 					<!--begin::Mixed Widget 2-->
 					<div class="card card-xxl-stretch">
 						<!--begin::Header-->
-						<div class="card-header border-0 bg-danger py-5">
+						<div class="card-header border-0 py-5" style="background-color: #000000;">
 							<h3 class="card-title fw-bolder text-white">Courier Statistics</h3>
 							<div class="card-toolbar">
 								<!--begin::Menu-->
@@ -169,7 +169,7 @@
 						<!--begin::Body-->
 						<div class="card-body p-0">
 							<!--begin::Chart-->
-							<div class="mixed-widget-2-chart card-rounded-bottom bg-danger" data-kt-color="danger" style="height: 150px">
+							<div class="mixed-widget-2-chart card-rounded-bottom " data-kt-color="danger" style="height: 150px; background-color: #000000;">
 						<img src="{{asset('assets/media/Frontier-logo-2.png')}}" style="margin-left:100px;"></div>
 							<!--end::Chart-->
 							<!--begin::Stats-->
@@ -300,7 +300,7 @@
 										     <th>Docket No</th>
 											 <th>Docket Date</th>
 											<th >Name</th>
-											<th >Type</th>
+											<th >City</th>
 											<th >Courier Name</th>
 										</tr>
 									</thead>
@@ -316,12 +316,13 @@
 							 $date = $recent['created_at'];
 							 $createDate = new DateTime($date);
 							 $strip = $createDate->format('Y-m-d');
+							 $new = date("d-m-Y", strtotime($recent['docket_date']));
 				                  		?>
 										<tr>
 										<td>{{$recent->docket_no}}</td>
-										<td>{{$recent->docket_date}}</td>
+										<td>{{$new}}</td>
 										<td>{{$n = $l[0]}}</td>
-							            <td>{{$c = $l[1]}}</td>
+							            <td>{{$recent->city}}</td>
 										<td>{{$recent->courier_name}}</td>
 										</tr>
                                         @endforeach

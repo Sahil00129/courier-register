@@ -80,7 +80,7 @@ th {
 			<!--begin::Card-->
 			<div class="card">
 				<!--begin::Card body-->
-				<div class="card-body pt-0">
+				<div class="card-body pt-0" style="margin: 15px; padding:39px;">
 					<!--begin::Table-->
 					 <!--begin::Input group-->
 
@@ -93,7 +93,7 @@ th {
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="name" name="name" class="form-control form-control-solid mb-3 mb-lg-0" style="width:81%;" placeholder="" value="" />
+        <input type="text" id="name" name="name" class="form-control form-control-solid mb-3 mb-lg-0" style="width:81%;" placeholder="" value="" required/>
         <!--end::Input-->
 </div>
     </div>
@@ -265,20 +265,24 @@ th {
 					  processData: false,
 					  contentType: false,
 					  success: (data) => {
-                          
+                       $('#sender').trigger('reset');
                         //this.reset();
                         //console.log(data.ignoredItems);
                         //console.log(data.ignoredcount);
                         if(data.success === true) { 
                           
                            
-                            swal("success!", "Data has been Submitted successfully", "success");
+                            swal("Success!", "Data has been Submitted successfully", "success");
+                            
                           }
                         
                         else{
-                        swal("error!", data.messages, "error");
+                        swal("Error!", data.messages, "error");
+                        
                         }
+                    
                         }
+                        
 				}); 
 			});	
 

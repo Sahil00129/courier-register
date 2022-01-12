@@ -93,18 +93,18 @@
 					  processData: false,
 					  contentType: false,
 					  success: (data) => {
-                          
+              $('#newSender').trigger('reset');       
                         //this.reset();
                         //console.log(data.ignoredItems);
                         //console.log(data.ignoredcount);
                         if(data.success === true) { 
                           
                            
-                            swal("success!", "Data has been Saved", "success");
+                            swal("Success!", "Data has been Saved", "success");
                           }
                         
                         else{
-                        swal("error!", data.messages, "error");
+                        swal("Error!", data.messages, "error");
                         }
                         }
 				}); 

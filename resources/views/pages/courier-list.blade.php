@@ -110,7 +110,6 @@ overflow-y:scroll;
 								<th class="min-w-125px">Docket No</th>
 								<th class="min-w-125px">Docket Date</th>
                                 <th class="min-w-125px">Name</th>
-								<th class="min-w-125px">Type</th>
 								<th class="min-w-125px">Address</th>
                                 <th class="min-w-125px">City</th>
                                 <th class="min-w-125px">Distt</th>
@@ -135,15 +134,14 @@ overflow-y:scroll;
 							   $date = $cmpny['created_at'];
                                $createDate = new DateTime($date);
                                $strip = $createDate->format('d-m-y');
-							   
+							   $newDate = date("d-m-Y", strtotime($cmpny['docket_date']));
                               // print_r($strip); die;
              						?>
              			<tr>
 							<td>{{$strip}}</td>
 							<td>{{$cmpny->docket_no}}</td>
-							<td>{{$cmpny->docket_date}}</td>
-                            <td>{{$n = $l[0]}}</td>
-							<td>{{$c = $l[1]}}</td>
+							<td>{{$newDate}}</td>
+                            <td>{{$n = $l[0]}}</td>	
 							<td>{{$cmpny->address}}</td>
 							<td>{{$cmpny->city}}</td>
 							<td>{{$cmpny->distt}}</td>

@@ -8,7 +8,7 @@
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="icon" href="{{ asset('favicon.png') }}"/>
+      
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         
@@ -70,9 +70,7 @@
                                         </label>
                                     </div>
                                     <div class="col text-right">
-                                        <a class="btn btn-link" href="">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
+                                        
                                     </div>
                                 </div>
                                 <div class="sign-btn text-center">

@@ -32,13 +32,13 @@ class SenderDetailsController extends Controller
         //echo"<pre>"; print_r($S); die;
         if(is_null($S)) {
         $sender->save();
-
+      
         $response['success'] = true;
         $response['messages'] = 'Succesfully imported';
         return Response::json($response);
         }else{
             $response['success'] = false;
-            $response['messages'] = 'data already exist';
+            $response['messages'] = 'Data already exist';
             return Response::json($response);
         }
         
@@ -53,14 +53,14 @@ class SenderDetailsController extends Controller
          $senders = Sender::orderby('name')->select('address','city','distt','pin_code','name','type','telephone_no')->get();
      
       }else{
-         $senders = Sender::orderby('name')->select('address','city','distt','pin_code','name','type','telephone_no')->where('name', 'like', '%' .$search . '%')->orWhere('type', 'like', '%' .$search . '%')->get();
+         $senders = Sender::orderby('name')->select('address','city','distt','pin_code','name','type','telephone_no')->where('name', 'like', '%' .$search . '%')->orWhere('city', 'like', '%' .$search . '%')->get();
       }
      
 
       $response = array();
       foreach($senders as $sender){
           
-         $response[] = array("value"=>$sender->address,"city"=>$sender->city,"distt"=>$sender->distt,"pin_code"=>$sender->pin_code,"num"=>$sender->telephone_no,"label"=>$sender->name.' - '.$sender->type);
+         $response[] = array("value"=>$sender->address,"city"=>$sender->city,"distt"=>$sender->distt,"pin_code"=>$sender->pin_code,"num"=>$sender->telephone_no,"label"=>$sender->name.' - '.$sender->city);
       }
 
       return response()->json($response);
@@ -93,10 +93,10 @@ class SenderDetailsController extends Controller
 
          }else{
           $sender->courier_name = $request->slct;
-          $sender->save();
+        
          } 
-
-
+         $sender->save();
+          
        
         //echo'<pre>'; print_r($request->other); die;
 

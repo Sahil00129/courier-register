@@ -64,19 +64,20 @@ $(document).ready(function (e) {
       success: (data) => {
         $(".indicator-progress").hide();
         $(".indicator-label").show();
+        $('#kt_modal_upload_csv').trigger('reset');
       //this.reset();
       //console.log(data.ignoredItems);
       //console.log(data.ignoredcount);
       if(data.success === true) { 
         
          
-          swal("success!", "File has been imported successfully", "success");
+          swal("Success!", "File has been imported successfully", "success");
         }
       
       else{
-      swal("error", data.messages, "error");
+      swal("Error", data.messages, "error");
       }
-      location.reload();
+      
       }
   });
   });
