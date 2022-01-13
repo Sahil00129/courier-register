@@ -186,8 +186,8 @@
 <div class="row">
    <div class="col"> 
         <label for="" class="form-label">Courier Name</label>
-        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" > 
-		<option>select..</option>
+        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
+		<option disabled selected >select..</option>
 		@foreach($couriers as $courier)
             <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
 		@endforeach

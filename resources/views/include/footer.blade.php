@@ -84,6 +84,11 @@
 			//alert('h'); die;
 			$('#newSender').submit(function(e) {
 		    e.preventDefault();
+        var slct = jQuery('#slct').val();
+        if (!slct) {
+        swal("Error!", "Please select courier name", "error");
+        return false;
+  }
 			//alert (this); die;
 				$.ajax({
 					  url: "/save-newSender", 
