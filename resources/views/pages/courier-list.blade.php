@@ -139,8 +139,8 @@ overflow-y:scroll;
 						@foreach ($cmpnys as $cmpny)
 						<?php 
 						        $l = (explode("-",$cmpny['name_company']));
-								$n = $l[0];
-								$c = $l[1];
+								$n = @$l[0];
+								$c = @$l[1];
 							//	echo'<pre>'; print_r($l); die;
 							   $date = $cmpny['created_at'];
                                $createDate = new DateTime($date);
