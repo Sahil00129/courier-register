@@ -105,5 +105,17 @@ class SenderDetailsController extends Controller
         return Response::json($response);
         
     }
+
+    public function destroy()
+    {
+      CourierSender::find($request->id)->delete();
+      return redirect()->route('users.index')
+                      ->with('success','User deleted successfully');
+    }
     
+
+    public function edit()
+    {
+      
+    }
 }

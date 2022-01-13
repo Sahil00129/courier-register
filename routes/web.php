@@ -114,3 +114,5 @@ Route::any('/save-sender', [SenderDetailsController::class, 'courierCmpy']);
 Route::get('/autocomplete-search', [SenderDetailsController::class, 'autocompleteSearch']);
 
 Route::any('/save-newSender', [SenderDetailsController::class, 'newCreate']);
+
+Route::any('/destroy', [SenderDetailsController::class, 'destroy']);

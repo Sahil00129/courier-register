@@ -110,7 +110,7 @@ th {
 
             <div class="form-check form-check-inline">
                 <!--begin::Input-->
-                <input class="form-check-input me-3" name="type" type="radio" value="vendor" id="kt_docs_formvalidation_radio_option_1" />
+                <input class="form-check-input me-3" name="type" type="radio" value="vendor" id="kt_docs_formvalidation_radio_option_1"/>
                 <!--end::Input-->
 
                 <!--begin::Label-->
@@ -193,7 +193,7 @@ th {
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="city" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="city" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
 </div>
@@ -227,7 +227,7 @@ th {
         <label class="fw-bold fs-6 mb-2">Telephone No.</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
 	<button type="submit" class="btn btn-danger">Save</button>                 
