@@ -310,8 +310,8 @@
                                         @foreach($recents as $recent)
 						  				<?php 
 						                $l = (explode("-",$recent['name_company']));
-						        		$n = $l[0];
-						        		$c = $l[1];
+						        		$n = @$l[0];
+						        		$c = @$l[1];
 						 	//	echo'<pre>'; print_r($l); die;
 							 $date = $recent['created_at'];
 							 $createDate = new DateTime($date);

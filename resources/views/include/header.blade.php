@@ -22,10 +22,69 @@
 							<a class="menu-link py-3" href="{{ url('dashboard') }}">	<span class="menu-title">Dashboard</span>
 							</a>
 						</div>
+						
 						<div class="menu-item me-lg-1">
 							<a class="menu-link py-3" href="{{ url('importExportView') }}">	<span class="menu-title">Import Master</span>
 							</a>
 						</div>
+
+                      <!--       	<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"     class="menu-item menu-lg-down-accordion me-lg-1">
+												<span class="menu-link py-3">
+													<span class="menu-title">Sender</span>
+													<span class="menu-arrow d-lg-none"></span>
+												</span>
+												<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+												<div class="menu-item">
+																		<a class="menu-link py-3" href="{{ url('sender-details') }}">
+																			<span class="menu-bullet">
+																				<span class="bullet bullet-dot"></span>
+																			</span>
+																			<span class="menu-title">Add New</span>
+																		</a>
+																	</div>
+												
+													
+													
+																	<div class="menu-item">
+																		<a class="menu-link py-3" href="{{ url('list-data') }}">
+																			<span class="menu-bullet">
+																				<span class="bullet bullet-dot"></span>
+																			</span>
+																			<span class="menu-title">Sender List</span>
+																		</a>
+																	</div>
+												</div>
+											</div>
+
+
+											<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
+												<span class="menu-link py-3">
+													<span class="menu-title">Courier</span>
+													<span class="menu-arrow d-lg-none"></span>
+												</span>
+												<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+												<div class="menu-item">
+																		<a class="menu-link py-3" href="{{ url('create-new') }}">
+																			<span class="menu-bullet">
+																				<span class="bullet bullet-dot"></span>
+																			</span>
+																			<span class="menu-title">Add New</span>
+																		</a>
+																	</div>
+												
+													
+													
+																	<div class="menu-item">
+																		<a class="menu-link py-3" href="{{ url('courier-list') }}">
+																			<span class="menu-bullet">
+																				<span class="bullet bullet-dot"></span>
+																			</span>
+																			<span class="menu-title">Courier List</span>
+																		</a>
+																	</div>
+												</div>
+											</div> -->
+
 						<div class="menu-item me-lg-1">
 							<a class="menu-link py-3" href="{{ url('sender-details') }}">	<span class="menu-title">Add Sender</span>
 							</a>
@@ -33,7 +92,7 @@
 						<div class="menu-item me-lg-1">
 						<a class="menu-link py-3" href="{{ url('list-data') }}"><span class="menu-title">Sender List </span>
 							</a>
-                     </ul>
+                  
 						</div>
 						<div class="menu-item me-lg-1">
 						<a class="menu-link py-3" href="{{ url('create-new') }}"><span class="menu-title">Add New Courier</span>

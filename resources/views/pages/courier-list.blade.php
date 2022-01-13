@@ -69,6 +69,11 @@ overflow-y:scroll;
 .paginate_button{
 	margin-left: 8px;
 }
+.dt-button{
+	border: none;
+	font-size: 21px;
+
+}
 </style>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<!--begin::Toolbar-->
