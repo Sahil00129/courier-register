@@ -135,7 +135,7 @@
 					<!--begin::Mixed Widget 2-->
 					<div class="card card-xxl-stretch">
 						<!--begin::Header-->
-						<div class="card-header border-0 py-5" style="background-color: #000000;">
+						<div class="card-header border-0 py-5" style="background-color: #1a7e1e;">
 							<h3 class="card-title fw-bolder text-white">Courier Statistics</h3>
 							<div class="card-toolbar">
 								<!--begin::Menu-->
@@ -170,7 +170,7 @@
 						<div class="card-body p-0">
 							<!--begin::Chart-->
 							<div class="mixed-widget-2-chart card-rounded-bottom " data-kt-color="danger" style="height: 150px; background-color: #000000;">
-						<img src="{{asset('assets/media/Frontier-logo-2.png')}}" style="margin-left:100px;"></div>
+						<img src="{{asset('assets/media/Frontier-logo-2.png')}}" style="margin-left:100px; margin-top:20px;"></div>
 							<!--end::Chart-->
 							<!--begin::Stats-->
 							<div class="card-p mt-n20 position-relative">
