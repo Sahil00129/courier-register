@@ -42,7 +42,7 @@
 
 				<!--begin::Title-->
 
-				<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Create New</h1>
+				<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Update Data</h1>
 
 				<!--end::Title-->
 
@@ -93,8 +93,9 @@
 
 				<div class="container mt-5">
                 <h3><b><u>Sender Details</u></b></h3>
-  <form id="newSender" method="post">
+  <form method="POST" action="{{'update-data/'.$sender->id}}">
       @csrf
+      @method('PUT')
       <div class="row">
    <div class="col">
 		<div class="fv-row mb-10">
@@ -104,13 +105,13 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="search" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="" />
+        <input type="text" id="" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="{{$sender->name_company}}" />
         <!--end::Input-->
        </div>
 </div>
 <div class="col">
        <label for="" class="form-label">Address</label>
-    <textarea id="address" name="address" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1"></textarea>
+    <textarea id="address" name="address" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1" value="{{$sender->address}}"></textarea>
 </div>
 
 
@@ -123,7 +124,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="city" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="city" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->city}}" />
         <!--end::Input-->
     </div>
 </div>
@@ -137,7 +138,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="distt" name="distt" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="distt" name="distt" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->Distt}}" />
         <!--end::Input-->
     </div>
 </div>
@@ -148,7 +149,7 @@
         <label class="fw-bold fs-6 mb-2">Pin Code</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="pin_code" name="pin_code" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
+        <input type="text" id="pin_code" name="pin_code" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->pin_code}}" style="width:119%;"/>
         <!--end::Input-->
     </div>
 </div>
@@ -158,7 +159,7 @@
         <label class="fw-bold fs-6 mb-2">Telephone No.</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->telephone_no}}" />
         <!--end::Input-->
     </div>
 </div>
@@ -171,7 +172,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
+        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->docket_no}}" required/>
         <!--end::Input-->
     </div>
 </div>
@@ -183,7 +184,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
+        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->docket_date}}" required/>
         <!--end::Input-->
     </div>
 </div>
@@ -191,30 +192,26 @@
 
 	   <!--begin::solid autosize textarea-->
     <label for="" class="form-label">Document Details</label>
-    <textarea  id="document" name="document" class="form-control form-control form-control-solid" data-kt-autosize="true" ></textarea><br>
+    <textarea  id="document" name="document" class="form-control form-control form-control-solid" data-kt-autosize="true" value="{{$sender->document}}"></textarea><br>
 	<br>
 
 <!--end::solid autosize textarea-->
 <div class="row">
-   <div class="col"> 
-        <label for="" class="form-label">Courier Name</label>
-        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
-		<option disabled selected >select..</option>
-		@foreach($couriers as $courier)
-            <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
-		@endforeach
-      <option>other</option>
 
-        </select><br>
-		<br>
-		<div id="ifYes" style="display: none;">
-		<input type="text" id="other" name="other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
-</div><br>
+<div class="col"> 
+<div class="fv-row mb-10 col-md-16">
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2">Given To</label>
+        <!--end::Label-->
+
+        <!--begin::Input-->
+        <input type="text" id="given_to" name="given_to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->given_to}}" />
+        <!--end::Input-->
+    </div>
+</div>
 </div>
 
-</div>
-
-		<button type="submit" class="btn btn-danger">Add</button>
+		<button type="submit" class="btn btn-danger">Update</button>
     </div>
 </form>		
 </div>
@@ -234,5 +231,12 @@
 	<!--end::Post-->
 
 </div>
+<script src="{{('https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js')}}" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+@if(Session::has('update'))
+<script>
+	swal("Good job", "Data has been imported successfully!!","success");
+</script>
+	@endif
 
 @endsection

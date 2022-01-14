@@ -116,3 +116,16 @@
 			});	
 
     </script>
+    @if(Session::has('deleted'))
+<script>
+	swal("Deleted", "Data has been Deleted","success");
+</script>
+	@endif
+
+  </script>
+    @if(Session::has('update'))
+<script>
+	swal("Updated", "Data has been successfully updated","success");
+</script>
+	@endif
+

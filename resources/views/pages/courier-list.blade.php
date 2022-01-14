@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Courier List')
 @section('content')
+
 <style>
 div#itemList_filter {
     width: 70%;
@@ -74,7 +75,24 @@ overflow-y:scroll;
 	font-size: 21px;
 
 }
+.btn {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
 </style>
+
+
+
+
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<!--begin::Toolbar-->
 	<div class="toolbar" id="kt_toolbar">
@@ -129,6 +147,7 @@ overflow-y:scroll;
 								<th class="min-w-125px">Document Details</th>
 								<th class="min-w-125px">Courier Company</th>
 								<th class="min-w-125px">Given To</th>
+								<th class="min-w-125px">Action</th>
 							</tr>
 							<!--end::Table row-->
 						</thead>
@@ -161,6 +180,9 @@ overflow-y:scroll;
 							<td>{{$cmpny->document}}</td>
 							<td>{{$cmpny->courier_name}}</td>
 							<td>{{$cmpny->given_to}}</td>
+							<td><a href="delete/{{$cmpny->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+							<a href="{{ url('edit/'.$cmpny->id) }}" class="btn btn-warning edit"><i class='fas fa-edit' style='font-size:24px; width:42%;'></i></a></td>
+
                            </tr>
                          @endforeach
 						</tbody>
@@ -178,10 +200,15 @@ overflow-y:scroll;
 	</div>
 	<!--end::Post-->
 </div>
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
 <script>
+
+
 $(document).ready( function() {
     $('#new').DataTable( {
         dom: 'Bfrtip',
@@ -192,5 +219,9 @@ $(document).ready( function() {
         } ]
     } );
 } );
+
+
 </script>
+
+
 @endsection

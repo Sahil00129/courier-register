@@ -115,4 +115,8 @@ Route::get('/autocomplete-search', [SenderDetailsController::class, 'autocomplet
 
 Route::any('/save-newSender', [SenderDetailsController::class, 'newCreate']);
 
-Route::any('/destroy', [SenderDetailsController::class, 'destroy']);
+Route::any('delete/{id}', [SenderDetailsController::class, 'destroy']);
+
+Route::get('edit/{id}', [SenderDetailsController::class, 'edit']);
+
+Route::any('edit/update-data/{id}', [SenderDetailsController::class, 'update']);

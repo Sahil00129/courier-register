@@ -8,6 +8,7 @@ use App\CourierSender;
 use App\CourierCompany;
 use DB;
 use Response;
+use Session;
 
 class SenderDetailsController extends Controller
 {
@@ -106,16 +107,43 @@ class SenderDetailsController extends Controller
         
     }
 
-    public function destroy()
+    public function destroy($cmpny_id)
     {
-      CourierSender::find($request->id)->delete();
-      return redirect()->route('users.index')
-                      ->with('success','User deleted successfully');
+      $cmpny = CourierSender::find($cmpny_id);
+  //Session::flash('delete', 'deleted');
+  $cmpny->delete();
+  Session::flash('deleted', 'Data has been deleted');
+  return redirect()->back();
     }
     
 
-    public function edit()
+    public function edit($id)
     {
+      $sender = CourierSender::find($id);
+
+          return view('update',compact('sender' ));
+         // return view('update',  ['sender' => $sender]);
+    }
+
+    public function update(Request $request,$id)
+    {
+      $senders = CourierSender::find($id);
+      $senders->name_company = $request->name_company; 
+      $senders->address = $request->address;
+      $senders->city = $request->city;
+      $senders->distt = $request->distt;
+      $senders->pin_code = $request->pin_code;
+      $senders->docket_no = $request->docket_no;
+      $senders->docket_date = $request->docket_date;
+      $senders->document = $request->document;
+      $senders->telephone_no = $request->telephone_no;
+      $senders->given_to = $request->given_to;
+
+      Session::flash('update', 'Data has been updated successfully');
+      $senders->update();
       
+      return redirect('courier-list');
+
+
     }
 }
