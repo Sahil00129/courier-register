@@ -62,21 +62,34 @@
         select: function (event, ui) {
            // Set selection
            $('#search').val(ui.item.label); // display the selected text
-           $('#address').val(ui.item.value); // save selected id to input
-           $('#city').val(ui.item.city);
-           $('#distt').val(ui.item.distt);
-           $('#pin_code').val(ui.item.pin_code);
+           $('#location').val(ui.item.value); // save selected id to input
            $('#telephone_no').val(ui.item.num);
            return false;
         }
       });
 });
-
+//
 		function yesnoCheck(that) {
     if (that.value == "other") {
         document.getElementById("ifYes").style.display = "block";
     } else {
         document.getElementById("ifYes").style.display = "none";
+    }
+}
+//
+function depCheck(that) {
+    if (that.value == "other") {
+        document.getElementById("Yes").style.display = "block";
+    } else {
+        document.getElementById("Yes").style.display = "none";
+    }
+}
+//
+function catCheck(that) {
+    if (that.value == "other") {
+        document.getElementById("catYes").style.display = "block";
+    } else {
+        document.getElementById("catYes").style.display = "none";
     }
 }
 

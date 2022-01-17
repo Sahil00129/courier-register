@@ -139,14 +139,14 @@ overflow-y:scroll;
 								<th class="min-w-125px">Docket No</th>
 								<th class="min-w-125px">Docket Date</th>
                                 <th class="min-w-125px">Name</th>
-								<th class="min-w-125px">Address</th>
-                                <th class="min-w-125px">City</th>
-                                <th class="min-w-125px">Distt</th>
-                                <th class="min-w-125px">Pin Code</th>
+								<th class="min-w-125px">Location</th>
 								<th class="min-w-125px">Telephone No</th>
 								<th class="min-w-125px">Document Details</th>
 								<th class="min-w-125px">Courier Company</th>
+                                <th class="min-w-125px">Department</th>
+								<th class="min-w-125px">Catagories</th>
 								<th class="min-w-125px">Given To</th>
+                                <th class="min-w-125px">Checked By</th>
 								<th class="min-w-125px">Action</th>
 							</tr>
 							<!--end::Table row-->
@@ -166,20 +166,21 @@ overflow-y:scroll;
                                $strip = $createDate->format('d-m-y');
 							   $newDate = date("d-m-Y", strtotime($cmpny['docket_date']));
                               // print_r($strip); die;
+                             
              						?>
              			<tr>
 							<td>{{$strip}}</td>
 							<td>{{$cmpny->docket_no}}</td>
 							<td>{{$newDate}}</td>
                             <td>{{$n = $l[0]}}</td>	
-							<td>{{$cmpny->address}}</td>
-							<td>{{$cmpny->city}}</td>
-							<td>{{$cmpny->distt}}</td>
-							<td>{{$cmpny->pin_code}}</td>
+							<td>{{$cmpny->location}}</td>
 							<td>{{$cmpny->telephone_no}}</td>
-							<td>{{$cmpny->document}}</td>
+							<td>{{$cmpny->document_details}}</td>
 							<td>{{$cmpny->courier_name}}</td>
+                            <td>{{$cmpny->department}}</td>
+                            <td>{{$cmpny->catagories}}</td>
 							<td>{{$cmpny->given_to}}</td>
+                            <td>{{$cmpny->checked_by}}</td>
 							<td><a href="delete/{{$cmpny->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 							<a href="{{ url('edit/'.$cmpny->id) }}" class="btn btn-warning edit"><i class='fas fa-edit' style='font-size:24px; width:42%;'></i></a></td>
 
@@ -209,16 +210,73 @@ overflow-y:scroll;
 <script>
 
 
-$(document).ready( function() {
-    $('#new').DataTable( {
+$(document).ready(function () {
+    
+    // Setup - add a text input to each footer cell
+    $('#new thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#new thead');
+ 
+    var table = $('#new').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
         dom: 'Bfrtip',
         buttons: [ {
             extend: 'excelHtml5',
             autoFilter: true,
             sheetName: 'Exported data'
-        } ]
-    } );
-} );
+        } ],
+        initComplete: function () {
+            var api = this.api();
+ 
+            // For each column
+            api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                    // Set the header cell to contain the input element
+                    var cell = $('.filters th').eq(
+                        $(api.column(colIdx).header()).index()
+                    );
+                    var title = $(cell).text();
+                    $(cell).html('<input type="text" placeholder="' + title + '" />');
+ 
+                    // On every keypress in this input
+                    $(
+                        'input',
+                        $('.filters th').eq($(api.column(colIdx).header()).index())
+                    )
+                        .off('keyup change')
+                        .on('keyup change', function (e) {
+                            e.stopPropagation();
+ 
+                            // Get the search value
+                            $(this).attr('title', $(this).val());
+                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
+ 
+                            var cursorPosition = this.selectionStart;
+                            // Search the column for that value
+                            api
+                                .column(colIdx)
+                                .search(
+                                    this.value != ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value != '',
+                                    this.value == ''
+                                )
+                                .draw();
+ 
+                            $(this)
+                                .focus()[0]
+                                .setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                });
+        },
+    });
+	
+});
 
 
 </script>

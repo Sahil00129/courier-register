@@ -25,10 +25,7 @@ class BulkImport implements ToModel,WithHeadingRow
             return new Sender([
                 'name'  => $row['name'],
                 'type'    => $row['type'],
-                'address' => $row['address'],
-                'distt'   => $row['distt'],
-                'city'   => $row['city'],
-                'pin_code' =>$row['pin_code'],
+                'location' => $row['location'],
                 'telephone_no' =>$row['telephone_no'],
             ]);
         }

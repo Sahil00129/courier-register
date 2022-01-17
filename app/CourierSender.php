@@ -11,6 +11,6 @@ class CourierSender extends Model
 
     protected $table = 'new_courier_sender';
     protected $fillable = [
-        'name_company','address','city','distt','pin_code','docket_no','docket_date','document','telephone_no','courier_name','given_to'
+        'name_company','location','docket_no','docket_date','document_details','telephone_no','courier_name','department','catagories','checked_by','given_to'
     ];
 }

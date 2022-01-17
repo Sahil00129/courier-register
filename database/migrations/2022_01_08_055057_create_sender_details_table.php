@@ -17,10 +17,7 @@ class CreateSenderDetailsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('type')->nullable();
-            $table->string('address')->nullable();
-            $table->string('distt')->nullable();
-            $table->string('city')->nullable();
-            $table->string('pin_code')->nullable();
+            $table->string('location')->nullable();
             $table->string('telephone_no')->nullable();
             $table->timestamps();
         });

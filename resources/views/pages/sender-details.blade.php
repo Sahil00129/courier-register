@@ -33,7 +33,7 @@ th {
 				<!--begin::Breadcrumb-->
 				<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 					<!--begin::Item-->
-					<li class="breadcrumb-item text-muted">	<a href="../../demo13/dist/index.html" class="text-muted text-hover-primary">Home</a>
+					<li class="breadcrumb-item text-muted">	<a href="#" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -154,46 +154,15 @@ th {
     </div>
 
     <!--end::Input group-->
-	 <!--begin::Input group-->
-	 <div class="fv-row mb-10">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Address</label>
-        <!--end::Label-->
-
-        <!--begin::Input-->
-        <input type="text" id="address_1" name="address_1" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Address 1" value="" />
-        <!--end::Input-->
-    </div>
-	 <!--begin::Input group-->
-	 <div class="fv-row mb-10">
-        <!--begin::Label-->
-        
-        <!--end::Label-->
-
-        <!--begin::Input-->
-        <input type="text" name="address_2" id="address_2" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Address 2" value="" />
-        <!--end::Input-->
-    </div>
-	 <!--begin::Input group-->
-	 <div class="fv-row mb-10">
-        <!--begin::Label-->
-        
-        <!--end::Label-->
-
-        <!--begin::Input-->
-        <input type="text" id="address_3" name="address_3" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Address 3" value="" />
-        <!--end::Input-->
-    </div>
-	 <!--begin::Input group-->
-     <div class="row">
+	<div class="row">
     <div class="col">
 	 <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">City</label>
+        <label class="fw-bold fs-6 mb-2">Location</label>
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="city" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
+        <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1"></textarea>
         <!--end::Input-->
     </div>
 </div>
@@ -201,35 +170,15 @@ th {
 	 <!--begin::Input group-->
 	 <div class="fv-row mb-10 col-md-12">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Distt</label>
+        <label class="fw-bold fs-6 mb-2">Telephone No</label>
         <!--end::Label-->
 
-        <!--begin::Input-->
-        <input type="text" id="distt" name="distt" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
-        <!--end::Input-->
-    </div>
-</div>
-	 <!--begin::Input group-->
-     <div class="col">
-	 <div class="fv-row mb-10 col-md-8">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Pin Code</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" id="pin_code" name="pin_code" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
-        <!--end::Input-->
-    </div>
-</div>
-</div>
-     <!--begin::Input group-->
-	 <div class="fv-row mb-10 col-md-4">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Telephone No.</label>
-        <!--end::Label-->
         <!--begin::Input-->
         <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
+</div>
+</div>
 	<button type="submit" class="btn btn-danger">Save</button>                 
 </form>      
 

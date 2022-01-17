@@ -44,7 +44,7 @@ th {
 				<!--begin::Breadcrumb-->
 				<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 					<!--begin::Item-->
-					<li class="breadcrumb-item text-muted">	<a href="../../demo13/dist/index.html" class="text-muted text-hover-primary">Home</a>
+					<li class="breadcrumb-item text-muted">	<a href="#" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -94,10 +94,7 @@ th {
 							<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="min-w-125px">Name</th>
 								<th class="min-w-125px">Type</th>
-								<th class="min-w-125px">Address</th>
-                                <th class="min-w-125px">Distt</th>
-                                <th class="min-w-125px">City</th>
-                                <th class="min-w-125px">Pin Code</th>
+								<th class="min-w-125px">Location</th>
 								<th class="min-w-125px">Telephone No</th>
 							</tr>
 							<!--end::Table row-->
@@ -110,10 +107,7 @@ th {
 							<tr>
                             <td>{{$send->name}}</td>
 							<td>{{$send->type}}</td>
-							<td>{{$send->address}}</td>
-							<td>{{$send->distt}}</td>
-							<td>{{$send->city}}</td>
-							<td>{{$send->pin_code}}</td>
+							<td>{{$send->location}}</td>
 							<td>{{$send->telephone_no}}</td>
                            </tr>
                          @endforeach
@@ -134,15 +128,72 @@ th {
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
 <script>
-$(document).ready( function() {
-    $('#example').DataTable( {
+$(document).ready(function () {
+    
+    // Setup - add a text input to each footer cell
+    $('#example thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#example thead');
+ 
+    var table = $('#example').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
         dom: 'Bfrtip',
         buttons: [ {
             extend: 'excelHtml5',
             autoFilter: true,
             sheetName: 'Exported data'
-        } ]
-    } );
-} );
+        } ],
+        initComplete: function () {
+            var api = this.api();
+ 
+            // For each column
+            api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                    // Set the header cell to contain the input element
+                    var cell = $('.filters th').eq(
+                        $(api.column(colIdx).header()).index()
+                    );
+                    var title = $(cell).text();
+                    $(cell).html('<input type="text" placeholder="' + title + '" />');
+ 
+                    // On every keypress in this input
+                    $(
+                        'input',
+                        $('.filters th').eq($(api.column(colIdx).header()).index())
+                    )
+                        .off('keyup change')
+                        .on('keyup change', function (e) {
+                            e.stopPropagation();
+ 
+                            // Get the search value
+                            $(this).attr('title', $(this).val());
+                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
+ 
+                            var cursorPosition = this.selectionStart;
+                            // Search the column for that value
+                            api
+                                .column(colIdx)
+                                .search(
+                                    this.value != ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value != '',
+                                    this.value == ''
+                                )
+                                .draw();
+ 
+                            $(this)
+                                .focus()[0]
+                                .setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                });
+        },
+    });
+	
+});
 </script>
 @endsection

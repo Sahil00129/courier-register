@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function dash()
     {
-        $recents = CourierSender::orderBy('id', 'desc')->limit(5)->get();
+        $recents = CourierSender::orderBy('id', 'desc')->limit(7)->get();
         return view('pages.dashboard',  ['recents' => $recents] );
 
     }

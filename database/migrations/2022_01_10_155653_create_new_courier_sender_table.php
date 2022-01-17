@@ -16,16 +16,16 @@ class CreateNewCourierSenderTable extends Migration
         Schema::create('new_courier_sender', function (Blueprint $table) {
             $table->id();
             $table->string('name_company')->nullable();
-            $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('distt')->nullable();
-            $table->string('pin_code')->nullable();
+            $table->string('location')->nullable();
             $table->string('docket_no')->nullable();
             $table->string('docket_date')->nullable();
-            $table->string('document')->nullable();
+            $table->string('document_details')->nullable();
             $table->string('telephone_no')->nullable();
             $table->string('courier_name')->nullable();
+            $table->string('department')->nullable();
+            $table->string('catagories')->nullable();
             $table->string('given_to')->nullable();
+            $table->string('checked_by')->nullable();
             $table->timestamps();
         });
     }

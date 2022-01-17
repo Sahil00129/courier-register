@@ -19,10 +19,7 @@ class SenderDetailsController extends Controller
         $sender = new Sender;
         $sender->name = $request->name; 
         $sender->type = $request->type;
-        $sender->address = $request->address_1.','.$request->address_2.','.$request->address_3;
-        $sender->city = $request->city;
-        $sender->distt = $request->distt;
-        $sender->pin_code = $request->pin_code;
+        $sender->location = $request->location;
         $sender->telephone_no = $request->telephone_no;
 
 
@@ -51,17 +48,17 @@ class SenderDetailsController extends Controller
       $search = $request->search;
 
       if($search == ''){
-         $senders = Sender::orderby('name')->select('address','city','distt','pin_code','name','type','telephone_no')->get();
+         $senders = Sender::orderby('name')->select('location','name','type','telephone_no')->get();
      
       }else{
-         $senders = Sender::orderby('name')->select('address','city','distt','pin_code','name','type','telephone_no')->where('name', 'like', '%' .$search . '%')->orWhere('city', 'like', '%' .$search . '%')->get();
+         $senders = Sender::orderby('name')->select('location','name','type','telephone_no')->where('name', 'like', '%' .$search . '%')->orWhere('location', 'like', '%' .$search . '%')->get();
       }
      
 
       $response = array();
       foreach($senders as $sender){
           
-         $response[] = array("value"=>$sender->address,"city"=>$sender->city,"distt"=>$sender->distt,"pin_code"=>$sender->pin_code,"num"=>$sender->telephone_no,"label"=>$sender->name.' - '.$sender->city);
+         $response[] = array("value"=>$sender->location,"num"=>$sender->telephone_no,"label"=>$sender->name.' - '.$sender->location);
       }
 
       return response()->json($response);
@@ -74,18 +71,32 @@ class SenderDetailsController extends Controller
       //echo"<pre>"; print_r($_POST); die;
         $sender = new CourierSender;
         $sender->name_company = $request->name_company; 
-        $sender->address = $request->address;
-        $sender->city = $request->city;
-        $sender->distt = $request->distt;
-        $sender->pin_code = $request->pin_code;
+        $sender->location = $request->location;
         $sender->docket_no = $request->docket_no;
         $sender->docket_date = $request->docket_date;
-        $sender->document = $request->document;
+
+       // $month = $request->docket_date;
+        //  $cng = date('F Y', strtotime($month));
+        $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
         $sender->telephone_no = $request->telephone_no;
         $sender->given_to = $request->given_to;
+
+        $sender->department = $request->department;
+        if($request->department == "other"){
+         $sender->department = $request->other_dept;
+        }else{
+         $sender->department = $request->department;
+        }
+
+        $sender->catagories = $request->catagories;
+        if($request->catagories == "other"){
+         $sender->catagories = $request->other_cat;
+        }else{
+         $sender->catagories = $request->catagories;
+        }
+
         $sender->courier_name = $request->slct;
           
-
          if($request->slct == "other"){
           $sender->courier_name = $request->other;
           $cmpny = new CourierCompany;
@@ -93,8 +104,7 @@ class SenderDetailsController extends Controller
           $cmpny->save();
 
          }else{
-          $sender->courier_name = $request->slct;
-        
+          $sender->courier_name = $request->slct;  
          } 
          $sender->save();
           
@@ -109,19 +119,20 @@ class SenderDetailsController extends Controller
 
     public function destroy($cmpny_id)
     {
-      $cmpny = CourierSender::find($cmpny_id);
-  //Session::flash('delete', 'deleted');
-  $cmpny->delete();
-  Session::flash('deleted', 'Data has been deleted');
-  return redirect()->back();
+       $cmpny = CourierSender::find($cmpny_id);
+       //Session::flash('delete', 'deleted');
+       $cmpny->delete();
+       Session::flash('deleted', 'Data has been deleted');
+       return redirect()->back();
     }
     
 
     public function edit($id)
     {
       $sender = CourierSender::find($id);
-
-          return view('update',compact('sender' ));
+      $couriers = DB::table('courier_companies')->select ('courier_name')->distinct()->get();
+          //echo'<pre>'; print_r($sender); die;
+          return view('update',compact('sender','couriers'));
          // return view('update',  ['sender' => $sender]);
     }
 
@@ -129,21 +140,46 @@ class SenderDetailsController extends Controller
     {
       $senders = CourierSender::find($id);
       $senders->name_company = $request->name_company; 
-      $senders->address = $request->address;
-      $senders->city = $request->city;
-      $senders->distt = $request->distt;
-      $senders->pin_code = $request->pin_code;
+      $senders->location = $request->location;
+      $senders->telephone_no = $request->telephone_no;
       $senders->docket_no = $request->docket_no;
       $senders->docket_date = $request->docket_date;
-      $senders->document = $request->document;
-      $senders->telephone_no = $request->telephone_no;
+      //$months = $request->docket_date;
+      //$chg = date('F Y', strtotime($months));
+      $senders->document_details = $request->bill.','.$request->amount.','.$request->from.','.$request->for.','.$request->month.','.$request->other_detail;
       $senders->given_to = $request->given_to;
+      $senders->checked_by = $request->checked_by;
 
+      $senders->department = $request->department;
+      if($request->department == "other"){
+       $senders->department = $request->other_dept;
+      }else{
+       $senders->department = $request->department;
+      }
+
+      $senders->catagories = $request->catagories;
+      if($request->catagories == "other"){
+       $senders->catagories = $request->other_cat;
+      }else{
+       $senders->catagories = $request->catagories;
+      }
+
+      $senders->courier_name = $request->slct;
+          
+      if($request->slct == "other"){
+       $senders->courier_name = $request->other;
+       $cmpny = new CourierCompany;
+       $cmpny->courier_name = $request->other;
+       $cmpny->save();
+
+      }else{
+       $senders->courier_name = $request->slct;  
+      } 
+       
       Session::flash('update', 'Data has been updated successfully');
       $senders->update();
       
       return redirect('courier-list');
-
 
     }
 }
