@@ -203,18 +203,26 @@
     </div>
 </div>
 <div class="row">
-<div class="col">
-	 <!--begin::Input group-->
-	 <div class="fv-row mb-10 col-md-12">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">For</label>
-        <!--end::Label-->
+<div class="col"> 
+        <label for="" class="form-label">For</label>
+        <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
+		<option value="{{$for}}" selected >{{$for}}</option>
+        <option value="Frontier Agrotech Pvt Ltd">Frontier Agrotech Pvt Ltd</option>
+       <option value="FAPL">FAPL</option>
+       <option value="FPCL">FPCL</option>
+       <option value="Eternity Forward">Eternity Forward</option>
+       <option value="Frontier Ventures Pvt Ltd">Frontier Ventures Pvt Ltd</option>
+       <option value="Fcc Agchem Services">Fcc Agchem Services</option>
+       <option value="Frontier Construction Company">Frontier Construction Company</option>
+      <option>other</option>
 
-        <!--begin::Input-->
-        <input type="text" id="for" name="for" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$for}}" />
-        <!--end::Input-->
-    </div>
-</div>
+        </select><br>
+		<br>
+		<div id="forYes" style="display: none;">
+		<input type="text" id="for_other" name="for_other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+ </div><br>
+
+ </div>
 	 <!--begin::Input group-->
      <div class="col">
 	 <div class="fv-row mb-10 col-md-10">

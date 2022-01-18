@@ -68,19 +68,23 @@ class SenderDetailsController extends Controller
 
     public function newCreate(Request $request)
     {
-      //echo"<pre>"; print_r($_POST); die;
+        //echo"<pre>"; print_r($_POST); die;
         $sender = new CourierSender;
         $sender->name_company = $request->name_company; 
         $sender->location = $request->location;
         $sender->docket_no = $request->docket_no;
         $sender->docket_date = $request->docket_date;
-
-       // $month = $request->docket_date;
-        //  $cng = date('F Y', strtotime($month));
+       
         $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
+       
+        if($request->for == "other"){
+         $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for_other.', '.$request->month.', '.$request->other_detail;
+        }else{
+         $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
+        }
+
         $sender->telephone_no = $request->telephone_no;
         $sender->given_to = $request->given_to;
-
         $sender->department = $request->department;
         if($request->department == "other"){
          $sender->department = $request->other_dept;
@@ -95,8 +99,7 @@ class SenderDetailsController extends Controller
          $sender->catagories = $request->catagories;
         }
 
-        $sender->courier_name = $request->slct;
-          
+        $sender->courier_name = $request->slct; 
          if($request->slct == "other"){
           $sender->courier_name = $request->other;
           $cmpny = new CourierCompany;
@@ -106,6 +109,9 @@ class SenderDetailsController extends Controller
          }else{
           $sender->courier_name = $request->slct;  
          } 
+
+         
+
          $sender->save();
           
        
@@ -147,6 +153,11 @@ class SenderDetailsController extends Controller
       //$months = $request->docket_date;
       //$chg = date('F Y', strtotime($months));
       $senders->document_details = $request->bill.','.$request->amount.','.$request->from.','.$request->for.','.$request->month.','.$request->other_detail;
+      if($request->for == "other"){
+         $senders->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for_other.', '.$request->month.', '.$request->other_detail;
+        }else{
+         $senders->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
+        }
       $senders->given_to = $request->given_to;
       $senders->checked_by = $request->checked_by;
 

@@ -94,6 +94,14 @@ function catCheck(that) {
 }
 
 ///
+function forCheck(that) {
+    if (that.value == "other") {
+        document.getElementById("forYes").style.display = "block";
+    } else {
+        document.getElementById("forYes").style.display = "none";
+    }
+}
+///
 			//alert('h'); die;
 			$('#newSender').submit(function(e) {
 		    e.preventDefault();
@@ -110,7 +118,14 @@ function catCheck(that) {
 					  data:new FormData(this),
 					  processData: false,
 					  contentType: false,
+                       beforeSend: function(){
+                     $(".indicator-progress").show(); 
+                      $(".indicator-label").hide();
+        
+                      },
 					  success: (data) => {
+                        $(".indicator-progress").hide();
+        $(".indicator-label").show();
               $('#newSender').trigger('reset');       
                         //this.reset();
                         //console.log(data.ignoredItems);

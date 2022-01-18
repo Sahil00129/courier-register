@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Courier List')
 @section('content')
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <style>
 div#itemList_filter {
     width: 70%;
@@ -145,8 +145,8 @@ overflow-y:scroll;
 								<th class="min-w-125px">Courier Company</th>
                                 <th class="min-w-125px">Department</th>
 								<th class="min-w-125px">Catagories</th>
-								<th class="min-w-125px">Given To</th>
                                 <th class="min-w-125px">Checked By</th>
+                                <th class="min-w-125px">Given To</th>
 								<th class="min-w-125px">Action</th>
 							</tr>
 							<!--end::Table row-->
@@ -179,8 +179,8 @@ overflow-y:scroll;
 							<td>{{$cmpny->courier_name}}</td>
                             <td>{{$cmpny->department}}</td>
                             <td>{{$cmpny->catagories}}</td>
-							<td>{{$cmpny->given_to}}</td>
                             <td>{{$cmpny->checked_by}}</td>
+                            <td>{{$cmpny->given_to}}</td>
 							<td><a href="delete/{{$cmpny->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 							<a href="{{ url('edit/'.$cmpny->id) }}" class="btn btn-warning edit"><i class='fas fa-edit' style='font-size:24px; width:42%;'></i></a></td>
 

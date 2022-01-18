@@ -128,7 +128,7 @@ div#ignoredItems {
 															</select> 
 														<div>
 														<div class="d-flex flex-column mb-8 fv-row mt-3">
-                                                        <input type="file" id="myCsv" name="file" class="form-control" accept=".xlsx">
+                                                        <input type="file" id="myCsv" name="file" class="form-control" accept=".xlsx"> 
 														</div>
                                                         <br>
 														<button type="submit" id="btn-save" class="btn btn-primary">

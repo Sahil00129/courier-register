@@ -57,7 +57,7 @@ $(document).ready(function (e) {
       contentType: false,
       processData: false,
       beforeSend: function(){
-        $(".indicator-progress").show();
+        $(".indicator-progress").show(); 
         $(".indicator-label").hide();
         
        },

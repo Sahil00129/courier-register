@@ -300,7 +300,7 @@
 										     <th>Docket No</th>
 											 <th>Docket Date</th>
 											<th >Name</th>
-											<th >City</th>
+											<th >Location</th>
 											<th >Courier Name</th>
 										</tr>
 									</thead>
@@ -312,17 +312,17 @@
 						                $l = (explode("-",$recent['name_company']));
 						        		$n = @$l[0];
 						        		$c = @$l[1];
-						 	//	echo'<pre>'; print_r($l); die;
-							 $date = $recent['created_at'];
-							 $createDate = new DateTime($date);
-							 $strip = $createDate->format('Y-m-d');
-							 $new = date("d-m-Y", strtotime($recent['docket_date']));
+						     	//echo'<pre>'; print_r($l); die;
+						    	 $date = $recent['created_at'];
+						    	 $createDate = new DateTime($date);
+						    	 $strip = $createDate->format('Y-m-d');
+							     $new = date("d-m-Y", strtotime($recent['docket_date']));
 				                  		?>
 										<tr>
 										<td>{{$recent->docket_no}}</td>
 										<td>{{$new}}</td>
 										<td>{{$n = $l[0]}}</td>
-							            <td>{{$recent->city}}</td>
+							            <td>{{$recent->location}}</td>
 										<td>{{$recent->courier_name}}</td>
 										</tr>
                                         @endforeach

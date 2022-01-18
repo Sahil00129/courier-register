@@ -1,7 +1,9 @@
 @extends('layouts.main')
 @section('title', 'Dashboard')
 @section('content')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <style>
+	
 div#itemList_filter {
     width: 70%;
     float: left;
