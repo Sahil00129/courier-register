@@ -38,12 +38,38 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 		<script src="{{ asset('js/custom.js') }}"></script>
 		<script src="{{ asset('js/import.js') }}"></script>
+        
 
-		<script type="text/javascript">
+<script type="text/javascript">
  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).ready(function(){
-    
-    $("#search").autocomplete({
+    //alert('h'); die;
+
+
+    $('#search').on('keyup',function () {
+                var query = $(this).val();
+                $.ajax({
+                    url:'{{ url('autocomplete-search') }}',
+                    type:'GET',
+                    data:{'search':query},
+                    success:function (data) {
+                        $('#product_list').html(data);
+                    }
+                });
+            });
+            $(document).on('click', 'li', function(){
+                var value = $(this).text();        
+                var location = value.split('-');         //break value in js split
+                for(var i = 0; i < location.length; i++){
+           
+
+                $('#search').val(value);
+                $('#location').val(location[1]);
+                $('#telephone_no').val(location[2]);
+                $('#product_list').html("");
+                }
+            });
+  /*  $("#search").autocomplete({
         source: function( request, response ) {
           // Fetch data
           $.ajax({
@@ -66,7 +92,7 @@
            $('#telephone_no').val(ui.item.num);
            return false;
         }
-      });
+      });   */
 });
 //
 		function yesnoCheck(that) {
@@ -143,7 +169,7 @@ function forCheck(that) {
 				}); 
 			});	
 
-    </script>
+ </script>
     @if(Session::has('deleted'))
 <script>
 	swal("Deleted", "Data has been Deleted","success");

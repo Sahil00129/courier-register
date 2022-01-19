@@ -4,13 +4,13 @@
 
 @section('content')
 <style>
-.ui-menu {
+.list-group{
     width: 300px !important;
-    background: #ccc !important;
+   
     padding: 10px !important;
     list-style-type: none;
 }
-.ui-autocomplete {
+.list-group {
     max-height: 230px;
     overflow-y: auto;
     / prevent horizontal scrollbar /
@@ -104,8 +104,9 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="search" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="" />
+        <input type="text" id="search" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="" autocomplete="off" />
         <!--end::Input-->
+        <div id="product_list"></div>
        </div>
 </div>
 <div class="col">

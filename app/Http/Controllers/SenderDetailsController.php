@@ -44,6 +44,31 @@ class SenderDetailsController extends Controller
 
     public function autocompleteSearch(Request $request)
     {
+        if ($request->ajax()) {
+           $data = Sender::orderby('name')->select('location','name','type','telephone_no')->where('name', 'like', '%' .$request->search . '%')->orWhere('location', 'like', '%' .$request->search . '%')->get();
+
+           // $data = Sender::where('name','LIKE',$request->search.'%')->orWhere('location','LIKE',$request->search.'%')->get();
+           // echo'<pre>'; print_r($data); die;
+            $output = '';
+            if (count($data)>0) {
+                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
+                foreach ($data as $row) {
+                   //echo'<pre>'; print_r($row->name);die;
+                    $output .= '<li class="list-group-item">'.$row->name.'-'.$row->location.'-'.$row->telephone_no.'</li>';  
+                }
+                $output .= '</ul>';
+            }else {
+                $output .= '<li class="list-group-item">'.'No Data Found'.'</li>';
+            }
+            return $output;
+        }
+        return view('create-new');  
+    }
+
+
+
+ /*   public function autocompleteSearch(Request $request)
+    {
         
       $search = $request->search;
 
@@ -64,7 +89,7 @@ class SenderDetailsController extends Controller
       return response()->json($response);
         
 
-    } 
+    } */
 
     public function newCreate(Request $request)
     {
