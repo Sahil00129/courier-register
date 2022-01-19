@@ -268,6 +268,7 @@
 		<option value="{{$sender->department}}" selected >{{$sender->department}}</option>
        <option value="Admin">Admin</option>
        <option value="Accounts">Accounts</option>
+       <option value="Agency">Agency</option>
        <option value="SD-1">SD-1</option>
        <option value="SD-3">SD-3</option>
        <option value="Eternity">Eternity</option>
