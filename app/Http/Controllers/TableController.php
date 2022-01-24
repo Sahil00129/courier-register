@@ -93,7 +93,6 @@ class TableController extends Controller
        $for_id = $request->for_id;
        $addfor = ForCompany::find($for_id);
        $addfor->for_company = $request->for_company;
-       Session::flash('update', 'Data has been updated successfully');
        $addfor->update();
       return redirect()->back();
 
