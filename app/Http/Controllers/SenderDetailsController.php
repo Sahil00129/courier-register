@@ -18,7 +18,7 @@ class SenderDetailsController extends Controller
 
     public function courierCmpy(Request $request) 
     {
-   // echo"<pre>"; print_r($_POST); die;
+   //echo"<pre>"; print_r($_POST); die;
         $sender = new Sender;
         $sender->name = $request->name; 
         $sender->type = $request->type;

@@ -68,13 +68,13 @@ th {
                          @endforeach
 						</tbody>
                         <tfoot>
-            <tr>
-            <th class="min-w-125px">Name</th>
-								<th class="min-w-125px">Type</th>
-								<th class="min-w-125px">Location</th>
-								<th class="min-w-125px">Telephone No</th>
-            </tr>
-        </tfoot>
+                    <tr>
+                        <th class="min-w-125px">Name</th>
+		            	<th class="min-w-125px">Type</th>
+		            	<th class="min-w-125px">Location</th>
+		            	<th class="min-w-125px">Telephone No</th>
+                    </tr>
+           </tfoot>
 						<!--end::Table body-->
 					</table>
 					<!--end::Table-->
@@ -86,11 +86,11 @@ th {
 		<!--end::Container-->
 	
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
-<script>
-$(document).ready(function () {
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
+  <script>
+  $(document).ready(function () {
     
     // Setup - add a text input to each footer cell
     $('#example thead tr')
@@ -98,7 +98,7 @@ $(document).ready(function () {
         .addClass('filters')
         .appendTo('#example thead');
  
-    var table = $('#example').DataTable({
+        var table = $('#example').DataTable({
         orderCellsTop: true,
         fixedHeader: true,
         dom: 'Bfrtip',

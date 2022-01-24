@@ -25,6 +25,11 @@
    li:hover{  
     color: blue;
  }  
+ .editlable{
+    font-weight: bold;
+    color: gray;
+
+ }
  
 </style>
 
@@ -94,7 +99,7 @@
 	      	<div class="fv-row mb-10">
         <!--begin::Label-->
        
-              <label class="fw-bold fs-6 mb-2">From</label>
+              <label class="fw-bold-gray fs-6 mb-2 editlable">From</label>
         <!--end::Label-->
 
         <!--begin::Input-->
@@ -104,7 +109,7 @@
        </div>
    </div>
    <div class="col">
-       <label for="" class="form-label">Location</label>
+       <label for="" class="form-label editlable">Location</label>
     <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1"></textarea>
    </div>
 
@@ -112,7 +117,7 @@
     <div class="col">
 	 <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Telephone No</label>
+        <label class="fw-bold-gray fs-6 mb-2 editlable">Telephone No</label>
         <!--end::Label-->
 
         <!--begin::Input-->
@@ -124,10 +129,26 @@
 
     <h3><b><u>Courier Details</u></b></h3>
 	<div class="row">
+    <div class="col"> 
+        <label for="" class="form-label editlable">Courier Name</label>
+        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
+		<option disabled selected >select..</option>
+		@foreach($couriers as $courier)
+            <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
+		@endforeach
+      <option>other</option>
+
+        </select><br>
+		<br>
+		<div id="ifYes" style="display: none;">
+		<input type="text" id="other" name="other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+ </div><br>
+
+ </div>
     <div class="col">
 	 <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Docket No.</label>
+        <label class="fw-bold-gray fs-6 mb-2 editlable">Docket No.</label>
         <!--end::Label-->
 
         <!--begin::Input-->
@@ -139,7 +160,7 @@
 	 <!--begin::Input group-->
 	 <div class="fv-row mb-10 col-md-12">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Docket Date</label>
+        <label class="fw-bold-gray fs-6 mb-2 editlable">Docket Date</label>
         <!--end::Label-->
 
         <!--begin::Input-->
@@ -155,7 +176,7 @@
     	 <!--begin::Input group-->
 	 <div class="fv-row mb-10 col-md-12">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Bill No</label>
+        <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label>
         <!--end::Label-->
 
         <!--begin::Input-->
@@ -167,7 +188,7 @@
         <div class="col">
 	    <div class="fv-row mb-10 col-md-10">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Amount</label>
+        <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label>
         <!--end::Label-->
         <!--begin::Input-->
         <input type="text" id="amount" name="amount" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
@@ -177,7 +198,7 @@
 
 <div class="fv-row mb-10 col-md-4">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">From</label>
+        <label class="fw-bold-gray fs-6 mb-2 editlable">From</label>
         <!--end::Label-->
         <!--begin::Input-->
         <input type="text" id="from" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
@@ -186,7 +207,7 @@
    </div>
     <div class="row">
     <div class="col"> 
-        <label for="" class="form-label">For</label>
+        <label for="" class="form-label editlable">For</label>
         <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
 		<option disabled selected >select..</option>
         @foreach($forcompany as $forcomp)
@@ -203,9 +224,9 @@
  </div>
 	 <!--begin::Input group-->
      <div class="col">
-	 <div class="fv-row mb-10 col-md-10">
+	 <div class="fv-row mb-10 col-md-10 editlable">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Month</label>
+        <label class="fw-bold-gray fs-6 mb-2">Month</label>
         <!--end::Label-->
         <!--begin::Input-->
         <input type="text" id="month" name="month" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
@@ -215,33 +236,17 @@
 
 <div class="fv-row mb-10 col-md-4">
         <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Other</label>
+        <label class="fw-bold-gray fs-6 mb-2 editlable">Other</label>
         <!--end::Label-->
         <!--begin::Input-->
         <input type="text" id="other_detail" name="other_detail" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
     </div>
 </div>
-
-<div class="row">
-      <div class="col"> 
-        <label for="" class="form-label">Courier Name</label>
-        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
-		<option disabled selected >select..</option>
-		@foreach($couriers as $courier)
-            <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
-		@endforeach
-      <option>other</option>
-
-        </select><br>
-		<br>
-		<div id="ifYes" style="display: none;">
-		<input type="text" id="other" name="other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-
- </div>
+<h3><b><u>Users Tag</u></b></h3>
+<div class="row">    
  <div class="col"> 
-        <label for="" class="form-label">Add Department</label>
+        <label for="" class="form-label editlable" >Add Department</label>
         <select class="form-select form-select-solid" id="department" name="department" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
 		<option disabled selected >select..</option>
         @foreach($departs as $depart)
@@ -254,12 +259,9 @@
 		<input type="text" id="other_dept" name="other_dept" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
  </div><br>
 		
-</div>
-
-</div>
-<div class="row">
+    </div>
    <div class="col"> 
-        <label for="" class="form-label">Add Catagories</label>
+        <label for="" class="form-label editlable" >Add Catagories</label>
         <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="catCheck(this);"> 
 		<option disabled selected >select..</option>
 		@foreach($categorys as $category)
@@ -273,6 +275,7 @@
  </div><br>
 </div>
 </div>
+
 
 		<button type="submit" class="btn btn-danger">
             <span class="indicator-label">Submit</span>

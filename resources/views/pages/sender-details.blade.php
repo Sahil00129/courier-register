@@ -135,7 +135,7 @@ th {
             </div>
             <!--end::Radio-->
 
-            <!--begin::Radio-->
+            <!--begin::Radio--> 
             <div class="form-check form-check-inline">
                 <!--begin::Input-->
                 <input class="form-check-input me-3" name="type" type="radio" value="Customer" id="kt_docs_formvalidation_radio_option_3" />
@@ -151,15 +151,19 @@ th {
             <!--begin::Radio-->
             <div class="form-check form-check-inline">
                 <!--begin::Input-->
-                <input class="form-check-input me-3" name="type" type="radio" value="other" id="kt_docs_formvalidation_radio_option_3" />
+                <input class="form-check-input me-3" name="chkPassPort" type="radio" onclick="ShowHideDiv()" value="other" id="chkYes" />
                 <!--end::Input-->
 
                 <!--begin::Label-->
-                <label class="form-check-label" for="kt_docs_formvalidation_radio_option_3">
+                <label class="form-check-label" for="chkYes">
                     <div class="fw-bolder text-gray-800">Other</div>
                 </label>
                 <!--end::Label-->
             </div>
+            <div id="dvPassport" style="display: none">
+        other:
+        <input type="text" id="txtPassportNumber" />
+    </div>
             <!--end::Radio-->
         </div>
 </div>
@@ -258,4 +262,12 @@ th {
 
 		});
     </script>
+    <script>
+        function ShowHideDiv() {
+            var chkYes = document.getElementById("chkYes");
+            var dvPassport = document.getElementById("dvPassport");
+            dvPassport.style.display = chkYes.checked ? "block" : "none";
+        }
+   </script>
+
 @endsection
