@@ -26,7 +26,7 @@
     color: blue;
  }  
  .editlable{
-    font-weight: bold;
+   
     color: gray;
 
  }
@@ -91,7 +91,7 @@
 
 
 				<div class="container mt-5">
-                <h3><b><u>Sender Details</u></b></h3>
+                <h3><b>Sender Details</b></h3>
      <form id="newSender" method="post">
          @csrf
              <div class="row">
@@ -170,7 +170,7 @@
     </div>
     </div>
 
-    <h3><b><u>Document Details</u></b></h3>
+    <h3><b>Document Details</b></h3>
     <div class="row">
     <div class="col">
     	 <!--begin::Input group-->
@@ -243,7 +243,7 @@
         <!--end::Input-->
     </div>
 </div>
-<h3><b><u>Users Tag</u></b></h3>
+<h3><b>Users Tag</b></h3>
 <div class="row">    
  <div class="col"> 
         <label for="" class="form-label editlable" >Add Department</label>
