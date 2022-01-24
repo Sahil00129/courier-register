@@ -41,7 +41,7 @@ th {
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
-					<li class="breadcrumb-item text-muted">Data</li>
+					<li class="breadcrumb-item text-muted">Add Sender</li>
 					<!--end::Item-->
 					<!--begin::Item-->
 					<li class="breadcrumb-item">	<span class="bullet bg-gray-200 w-5px h-2px"></span>
@@ -148,6 +148,19 @@ th {
                 <!--end::Label-->
             </div>
             <!--end::Radio-->
+            <!--begin::Radio-->
+            <div class="form-check form-check-inline">
+                <!--begin::Input-->
+                <input class="form-check-input me-3" name="type" type="radio" value="other" id="kt_docs_formvalidation_radio_option_3" />
+                <!--end::Input-->
+
+                <!--begin::Label-->
+                <label class="form-check-label" for="kt_docs_formvalidation_radio_option_3">
+                    <div class="fw-bolder text-gray-800">Other</div>
+                </label>
+                <!--end::Label-->
+            </div>
+            <!--end::Radio-->
         </div>
 </div>
         <!--end::Input row-->
@@ -167,7 +180,7 @@ th {
     </div>
 </div>
 <div class="col">
-	 <!--begin::Input group-->
+	 <!--begin::Input group--> 
 	 <div class="fv-row mb-10 col-md-12">
         <!--begin::Label-->
         <label class="fw-bold fs-6 mb-2">Telephone No</label>
@@ -177,10 +190,12 @@ th {
         <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
-</div>
-</div>
-	<button type="submit" class="btn btn-danger">Save</button>                 
-</form>      
+     </div>
+    </div>
+	<button type="submit" class="btn btn-danger"><span class="indicator-label">Save</span>
+		<span class="indicator-progress">Please wait...
+		<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span></button>                 
+     </form>      
 
 
 						<!--end::Table body-->
@@ -213,10 +228,16 @@ th {
 					  data:new FormData(this),
 					  processData: false,
 					  contentType: false,
+                      beforeSend: function(){
+                      $(".indicator-progress").show(); 
+                      $(".indicator-label").hide();
+                       },
 					  success: (data) => {
+                        $(".indicator-progress").hide();
+                        $(".indicator-label").show();
                        $('#sender').trigger('reset');
                         //this.reset();
-                        //console.log(data.ignoredItems);
+                        //console.log(data.ignoredItems); 
                         //console.log(data.ignoredcount);
                         if(data.success === true) { 
                           

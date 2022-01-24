@@ -11,6 +11,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\TableController;
 use App\Http\Controllers\SenderDetailsController;
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,10 @@ Route::get('purhase-data-request', 'AjaxController@getpurchaseServerSide');
 Route::get('list-data', 'ImportExportController@purchasedata');
 Route::get('create-new', 'ImportExportController@getpdf');
 Route::get('courier-list', 'ImportExportController@bulkpdf');
+Route::get('department',  [TableController::class, 'departmentTable']);
+Route::get('catagories',  [TableController::class, 'categoryTable']);
+Route::get('courier-company',  [TableController::class, 'courierCompanies']);
+Route::get('for-company',  [TableController::class, 'forCompany']);
 
 
 Route::get('/regAdmin', function () { return view('pages.register'); });
@@ -120,3 +125,16 @@ Route::any('delete/{id}', [SenderDetailsController::class, 'destroy']);
 Route::get('edit/{id}', [SenderDetailsController::class, 'edit']);
 
 Route::any('edit/update-data/{id}', [SenderDetailsController::class, 'update']);
+
+////
+Route::get('edit-department/{id}', [TableController::class, 'editDept']);
+Route::put('updated-department', [TableController::class, 'updateDepartment']);
+///
+Route::get('edit-catagories/{id}', [TableController::class, 'editCat']);
+Route::put('update-catagories', [TableController::class, 'updateCatagories']);
+////
+Route::get('edit-company/{id}', [TableController::class, 'editforCompany']);
+Route::put('updated-company', [TableController::class, 'updateforCompany']);
+////
+Route::get('edit-courierName/{id}', [TableController::class, 'editcourierCompany']);
+Route::put('updated-courier', [TableController::class, 'updatecourierCompany']);

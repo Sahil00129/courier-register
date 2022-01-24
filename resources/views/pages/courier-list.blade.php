@@ -130,7 +130,7 @@ overflow-y:scroll;
 				<!--begin::Card body-->
 				<div class="card-body pt-0" style="min-height:500px; width:auto;">
 				<div id="scroll">
-				<table class="table align-middle table-row-dashed fs-6 gy-5" id="new">
+				<table class="table align-middle table-row-dashed " id="new">
 						<!--begin::Table head-->
 						<thead>
 							<!--begin::Table row-->
@@ -160,14 +160,13 @@ overflow-y:scroll;
 						        $l = (explode("-",$cmpny['name_company']));
 								$n = @$l[0];
 								$c = @$l[1];
-							//	echo'<pre>'; print_r($l); die;
+							   //echo'<pre>'; print_r($l); die;
 							   $date = $cmpny['created_at'];
                                $createDate = new DateTime($date);
                                $strip = $createDate->format('d-m-y');
 							   $newDate = date("d-m-Y", strtotime($cmpny['docket_date']));
-                              // print_r($strip); die;
-                             
-             						?>
+                               //print_r($strip); die;  
+             		    	?>
              			<tr>
 							<td>{{$strip}}</td>
 							<td>{{$cmpny->docket_no}}</td>
@@ -183,14 +182,30 @@ overflow-y:scroll;
                             <td>{{$cmpny->given_to}}</td>
 							<td><a href="delete/{{$cmpny->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 							<a href="{{ url('edit/'.$cmpny->id) }}" class="btn btn-warning edit"><i class='fas fa-edit' style='font-size:24px; width:42%;'></i></a></td>
-
                            </tr>
                          @endforeach
 						</tbody>
+                        <tfoot>
+                             <tr>
+                               <th class="min-w-125px">Date of Receipt</th>
+								<th class="min-w-125px">Docket No</th>
+								<th class="min-w-125px">Docket Date</th>
+                                <th class="min-w-125px">Name</th>
+								<th class="min-w-125px">Location</th>
+								<th class="min-w-125px">Telephone No</th>
+								<th class="min-w-125px">Document Details</th>
+								<th class="min-w-125px">Courier Company</th>
+                                <th class="min-w-125px">Department</th>
+								<th class="min-w-125px">Catagories</th>
+                                <th class="min-w-125px">Checked By</th>
+                                <th class="min-w-125px">Given To</th>
+								<th class="min-w-125px">Action</th>
+                            </tr>
+                       </tfoot>
 						<!--end::Table body-->
 					</table>
-<div id="bottom">Paging</div>
-</div>
+                <div id="bottom">Paging</div>
+               </div>
 					<!--end::Table-->
 				</div>
 				<!--end::Card body-->

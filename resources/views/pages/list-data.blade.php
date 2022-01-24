@@ -31,57 +31,10 @@ th {
 
 }
 </style>
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
 	<!--begin::Toolbar-->
-	<div class="toolbar" id="kt_toolbar">
-		<!--begin::Container-->
-		<div id="kt_toolbar_container" class="container-xxl d-flex flex-stack">
-			<!--begin::Page title-->
-			<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-				<!--begin::Title-->
-				<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Sender List</h1>
-				<!--end::Title-->
-				<!--begin::Separator-->	<span class="h-20px border-gray-200 border-start mx-4"></span>
-				<!--end::Separator-->
-				<!--begin::Breadcrumb-->
-				<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
-					<!--begin::Item-->
-					<li class="breadcrumb-item text-muted">	<a href="#" class="text-muted text-hover-primary">Home</a>
-					</li>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<li class="breadcrumb-item">	<span class="bullet bg-gray-200 w-5px h-2px"></span>
-					</li>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<li class="breadcrumb-item text-dark">List Data</li>
-					<!--end::Item-->
-				</ul>
-				<!--end::Breadcrumb-->
-			</div>
-			<!--end::Page title-->
-			<!--begin::Actions-->
-			<div class="d-flex align-items-center py-1">
-				<!--begin::Wrapper-->
-				<div class="me-4">
-                <table>
-                    <tr id="filters">
-                   
-							</tr>
-                    </table> 
-				</div>
-				<!--end::Wrapper-->
-				<!--begin::Button-->
-                <!--<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">Create</a>-->
-				<!--end::Button-->
-			</div>
-			<!--end::Actions-->
-		</div>
-		<!--end::Container-->
-	</div>
-	<!--end::Toolbar-->
-	<!--begin::Post-->
-	<div class="post d-flex flex-column-fluid" id="kt_post">
+	
+	
 		<!--begin::Container-->
 		<div id="kt_content_container" class="container-xxl">
 			<!--begin::Card-->
@@ -89,7 +42,7 @@ th {
 				<!--begin::Card body-->
 				<div class="card-body pt-0">     
 					<!--begin::Table-->
-					<table class="table align-middle table-row-dashed fs-6 gy-5" id="example">
+					<table class="table align-middle table-row-dashed " id="example">
 						<!--begin::Table head-->
 						<thead>
 							<!--begin::Table row-->
@@ -114,6 +67,14 @@ th {
                            </tr>
                          @endforeach
 						</tbody>
+                        <tfoot>
+            <tr>
+            <th class="min-w-125px">Name</th>
+								<th class="min-w-125px">Type</th>
+								<th class="min-w-125px">Location</th>
+								<th class="min-w-125px">Telephone No</th>
+            </tr>
+        </tfoot>
 						<!--end::Table body-->
 					</table>
 					<!--end::Table-->
@@ -123,9 +84,8 @@ th {
 			<!--end::Card-->
 		</div> 
 		<!--end::Container-->
-	</div>
-	<!--end::Post-->
-</div>
+	
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>

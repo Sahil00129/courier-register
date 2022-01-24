@@ -109,15 +109,13 @@
         <input type="text" id="" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="{{$sender->name_company}}" />
         <!--end::Input-->
        </div>
-</div>
-<div class="col">
+      </div>
+      <div class="col">
        <label for="" class="form-label">Location</label>
     <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1" value="">{{$sender->location}}</textarea>
-</div>
+    </div>
 
-
-
-    
+ 
     <div class="col">
 	 <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
@@ -206,14 +204,10 @@
 <div class="col"> 
         <label for="" class="form-label">For</label>
         <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
-		<option value="{{$for}}" selected >{{$for}}</option>
-        <option value="Frontier Agrotech Pvt Ltd">Frontier Agrotech Pvt Ltd</option>
-       <option value="FAPL">FAPL</option>
-       <option value="FPCL">FPCL</option>
-       <option value="Eternity Forward">Eternity Forward</option>
-       <option value="Frontier Ventures Pvt Ltd">Frontier Ventures Pvt Ltd</option>
-       <option value="Fcc Agchem Services">Fcc Agchem Services</option>
-       <option value="Frontier Construction Company">Frontier Construction Company</option>
+	   	<option value="{{$for}}" selected >{{$for}}</option>
+           @foreach($forcompany as $forcomp)
+            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
+		@endforeach
       <option>other</option>
 
         </select><br>
@@ -266,14 +260,9 @@
         <label for="" class="form-label">Add Department</label>
         <select class="form-select form-select-solid" id="department" name="department" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
 		<option value="{{$sender->department}}" selected >{{$sender->department}}</option>
-       <option value="Admin">Admin</option>
-       <option value="Accounts">Accounts</option>
-       <option value="Agency">Agency</option>
-       <option value="SD-1">SD-1</option>
-       <option value="SD-3">SD-3</option>
-       <option value="Eternity">Eternity</option>
-       <option value="Legal">Legal</option>
-       <option value="IT">IT</option>
+        @foreach($forcompany as $forcomp)
+            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
+		@endforeach
       <option>other</option>
         </select>
         <br>
@@ -286,12 +275,9 @@
 <label for="" class="form-label">Add Catagories</label>
         <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="catCheck(this);"> 
 		<option value="{{$sender->catagories}}" selected >{{$sender->catagories}}</option>
-		
-            <option value="Agrements">Agrements</option>
-            <option value="Rent Agrement">Rent Agrement</option>
-            <option value="Distributor Agrement">Distributor Agrements</option>
-            <option value="Transport Bills">Transport Bills</option>
-            <option value="Courier Bills">Courier Bills</option>
+        @foreach($categorys as $category)
+            <option value="{{$category->catagories}}">{{$category->catagories}}</option>
+		@endforeach
 		
       <option>other</option>
 

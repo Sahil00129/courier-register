@@ -33,20 +33,20 @@
         <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
         
 
-
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+        <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js')}}"></script>
+	<!--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">   -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 		<script src="{{ asset('js/custom.js') }}"></script>
 		<script src="{{ asset('js/import.js') }}"></script>
         
 
-<script type="text/javascript">
- var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $(document).ready(function(){
-    //alert('h'); die;
+       <script type="text/javascript">
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+       $(document).ready(function(){
+       //alert('h'); die;
 
 
-    $('#search').on('keyup',function () {
+       $('#search').on('keyup',function () {
                 var query = $(this).val();
                 $.ajax({
                     url:'{{ url('autocomplete-search') }}',
@@ -95,7 +95,7 @@
       });   */
 });
 //
-		function yesnoCheck(that) {
+	function yesnoCheck(that) {
     if (that.value == "other") {
         document.getElementById("ifYes").style.display = "block";
     } else {
@@ -151,8 +151,8 @@ function forCheck(that) {
                       },
 					  success: (data) => {
                         $(".indicator-progress").hide();
-        $(".indicator-label").show();
-              $('#newSender').trigger('reset');       
+                        $(".indicator-label").show();
+                        $('#newSender').trigger('reset');       
                         //this.reset();
                         //console.log(data.ignoredItems);
                         //console.log(data.ignoredcount);

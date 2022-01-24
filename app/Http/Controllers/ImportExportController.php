@@ -22,7 +22,7 @@ class ImportExportController extends Controller
        return view('importexport');
     }
 
-
+//////////////////////////////////////////Import Master/////////////////////////////////////////////////
     public function import() 
     {
         if($_POST['import_type'] == 1){
@@ -57,10 +57,60 @@ class ImportExportController extends Controller
        return Response::json($response);
      }
 
+   }elseif($_POST['import_type'] == 3){
+
+    try
+    {      
+   //echo'<pre>'; print_r($_POST); die;
+      $data = Excel::import(new BulkImport, request()->file('file'));
+      $response['success'] = true;
+      $response['messages'] = 'Succesfully imported';
+      return Response::json($response);
+  
+      }catch (\Exception $e) {
+      $response['success'] = false;
+      $response['messages'] = 'something wrong';
+      return Response::json($response);
+   }
+
+   }elseif($_POST['import_type'] == 4){
+      
+    try
+    {      
+   //echo'<pre>'; print_r($_POST); die;
+      $data = Excel::import(new BulkImport, request()->file('file'));
+      $response['success'] = true;
+      $response['messages'] = 'Succesfully imported';
+      return Response::json($response);
+  
+      }catch (\Exception $e) {
+      $response['success'] = false;
+      $response['messages'] = 'something wrong';
+      return Response::json($response);
+   }
+
+
+   }elseif($_POST['import_type'] == 5){
+
+    try
+    {      
+   //echo'<pre>'; print_r($_POST); die;
+      $data = Excel::import(new BulkImport, request()->file('file'));
+      $response['success'] = true;
+      $response['messages'] = 'Succesfully imported';
+      return Response::json($response);
+  
+      }catch (\Exception $e) {
+      $response['success'] = false;
+      $response['messages'] = 'something wrong';
+      return Response::json($response);
+   }
+
    } 
-        //return back();
+    //return back();
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
     public function list()
     {
         
@@ -83,7 +133,11 @@ class ImportExportController extends Controller
     {
       
       $couriers = DB::table('courier_companies')->select ('courier_name')->distinct()->get();
-             return view('pages.create-new',  ['couriers' => $couriers]);
+      $departs = DB::table('departments')->select ('department')->distinct()->get();
+      $categorys = DB::table('catagories')->select ('catagories')->distinct()->get();
+      $forcompany = DB::table('for_companies')->select ('for_company')->distinct()->get();
+
+             return view('pages.create-new',  ['couriers' => $couriers , 'departs' => $departs ,'categorys' => $categorys ,'forcompany' => $forcompany]);
 
      }  
 
@@ -162,5 +216,7 @@ class ImportExportController extends Controller
         }
            
     }
+
+
 
 }

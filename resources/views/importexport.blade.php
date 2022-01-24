@@ -29,7 +29,7 @@ div#ignoredItems {
 									<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 										<!--begin::Item-->
 										<li class="breadcrumb-item text-muted">
-											<a href="../../demo13/dist/index.html" class="text-muted text-hover-primary">Home</a>
+											<a href="#" class="text-muted text-hover-primary">Home</a>
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->
@@ -48,8 +48,11 @@ div#ignoredItems {
 								<div class="d-flex align-items-center py-1">
 									<!--begin::Wrapper-->
 									<!--end::Wrapper-->
+									<a href="{{ url('courier-company') }}" class="btn btn-sm btn-primary" >Courier Companies</a> ||
+									<a href="{{ url('department') }}" class="btn btn-sm btn-primary" >Department</a> ||
 									<!--begin::Button-->
-									<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">Home</a>
+									<a href="{{ url('catagories') }}" class="btn btn-sm btn-primary">Categories</a>||
+									<a href="{{ url('for-company') }}" class="btn btn-sm btn-primary" >For</a> 
 									<!--end::Button-->
 								</div>
 								<!--end::Actions-->
@@ -124,7 +127,9 @@ div#ignoredItems {
 																<option value="">Select...</option>
 																<option value="1">Sender Import</option>
 																<option value="2">Courier Companies</option>
-																
+																<option value="3">Add Department</option>
+																<option value="4">Add Catagories</option>
+																<option value="5">For</option>
 															</select> 
 														<div>
 														<div class="d-flex flex-column mb-8 fv-row mt-3">

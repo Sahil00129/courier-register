@@ -169,7 +169,7 @@
 						<!--begin::Body-->
 						<div class="card-body p-0">
 							<!--begin::Chart-->
-							<div class="mixed-widget-2-chart card-rounded-bottom " data-kt-color="danger" style="height: 150px; background-color: #000000;">
+							<div class="mixed-widget-2-chart card-rounded-bottom " data-kt-color="danger" style="height: 150px; background-color: #fcf8f8">
 						<img src="{{asset('assets/media/Frontier-logo-2.png')}}" style="margin-left:100px; margin-top:20px;"></div>
 							<!--end::Chart-->
 							<!--begin::Stats-->

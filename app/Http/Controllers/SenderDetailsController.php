@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Sender;
 use App\CourierSender;
 use App\CourierCompany;
+use App\ForCompany;
+use App\Department;
+use App\Category;
 use DB;
 use Response;
 use Session;
@@ -101,9 +104,12 @@ class SenderDetailsController extends Controller
         $sender->docket_date = $request->docket_date;
        
         $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
-       
+        
         if($request->for == "other"){
          $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for_other.', '.$request->month.', '.$request->other_detail;
+         $forcompany = new ForCompany;
+         $forcompany->for_company = $request->for_other;
+         $forcompany->save();
         }else{
          $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
         }
@@ -113,6 +119,9 @@ class SenderDetailsController extends Controller
         $sender->department = $request->department;
         if($request->department == "other"){
          $sender->department = $request->other_dept;
+         $department = new Department;
+         $department->department = $request->other_dept;
+         $department->save();
         }else{
          $sender->department = $request->department;
         }
@@ -120,6 +129,10 @@ class SenderDetailsController extends Controller
         $sender->catagories = $request->catagories;
         if($request->catagories == "other"){
          $sender->catagories = $request->other_cat;
+         $category = new Category;
+         $category->catagories = $request->other_cat;
+         $category->save();
+
         }else{
          $sender->catagories = $request->catagories;
         }
@@ -162,8 +175,12 @@ class SenderDetailsController extends Controller
     {
       $sender = CourierSender::find($id);
       $couriers = DB::table('courier_companies')->select ('courier_name')->distinct()->get();
+      $departs = DB::table('departments')->select ('department')->distinct()->get();
+      $categorys = DB::table('catagories')->select ('catagories')->distinct()->get();
+      $forcompany = DB::table('for_companies')->select ('for_company')->distinct()->get();
+
           //echo'<pre>'; print_r($sender); die;
-          return view('update',compact('sender','couriers'));
+          return view('update',compact('sender','couriers','departs','categorys','forcompany'));
          // return view('update',  ['sender' => $sender]);
     }
 
@@ -180,6 +197,9 @@ class SenderDetailsController extends Controller
       $senders->document_details = $request->bill.','.$request->amount.','.$request->from.','.$request->for.','.$request->month.','.$request->other_detail;
       if($request->for == "other"){
          $senders->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for_other.', '.$request->month.', '.$request->other_detail;
+         $forcompany = new ForCompany;
+         $forcompany->for_company = $request->for_other;
+         $forcompany->save();
         }else{
          $senders->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
         }
@@ -189,6 +209,9 @@ class SenderDetailsController extends Controller
       $senders->department = $request->department;
       if($request->department == "other"){
        $senders->department = $request->other_dept;
+       $department = new Department;
+         $department->department = $request->other_dept;
+         $department->save();
       }else{
        $senders->department = $request->department;
       }
@@ -196,6 +219,9 @@ class SenderDetailsController extends Controller
       $senders->catagories = $request->catagories;
       if($request->catagories == "other"){
        $senders->catagories = $request->other_cat;
+       $category = new Category;
+       $category->catagories = $request->other_cat;
+       $category->save();
       }else{
        $senders->catagories = $request->catagories;
       }

@@ -149,10 +149,9 @@ div#ignoredItems {
                                         </div>
                                     </div>
                             </div>
-                            </div>                            
-
-						</div>
-						<!--end::Post-->
+                     </div>                            
+			</div>
+	   <!--end::Post-->
 					</div>
 
 @endsection

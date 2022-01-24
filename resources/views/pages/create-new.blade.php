@@ -22,6 +22,10 @@
   * html .ui-autocomplete {
     height: 100px;
   }
+   li:hover{  
+    color: blue;
+ }  
+ 
 </style>
 
 
@@ -51,24 +55,14 @@
 				<!--end::Separator-->
 
 				<!--begin::Breadcrumb-->
-
-
-
 				<!--end::Breadcrumb-->
 
 			</div>
-
 			<!--end::Page title-->
-
 			<!--begin::Actions-->
-
-			
 			<!--end::Actions-->
-
 		</div>
-
 		<!--end::Container-->
-
 	</div>
 
 	<!--end::Toolbar-->
@@ -93,28 +87,26 @@
 
 				<div class="container mt-5">
                 <h3><b><u>Sender Details</u></b></h3>
-  <form id="newSender" method="post">
-      @csrf
-      <div class="row">
-   <div class="col">
-		<div class="fv-row mb-10">
+     <form id="newSender" method="post">
+         @csrf
+             <div class="row">
+             <div class="col">
+	      	<div class="fv-row mb-10">
         <!--begin::Label-->
        
-        <label class="fw-bold fs-6 mb-2">From</label>
+              <label class="fw-bold fs-6 mb-2">From</label>
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="search" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="" autocomplete="off" />
+        <input type="text" id="search" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="" autocomplete="off"/>
         <!--end::Input-->
         <div id="product_list"></div>
        </div>
-</div>
-<div class="col">
+   </div>
+   <div class="col">
        <label for="" class="form-label">Location</label>
     <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1"></textarea>
-</div>
-
-
+   </div>
 
     
     <div class="col">
@@ -127,8 +119,8 @@
         <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
     </div>
-</div>
-</div>
+   </div>
+   </div>
 
     <h3><b><u>Courier Details</u></b></h3>
 	<div class="row">
@@ -154,12 +146,13 @@
         <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
-</div>
-</div>
-<h3><b><u>Document Details</u></b></h3>
-<div class="row">
-<div class="col">
-	 <!--begin::Input group-->
+    </div>
+    </div>
+
+    <h3><b><u>Document Details</u></b></h3>
+    <div class="row">
+    <div class="col">
+    	 <!--begin::Input group-->
 	 <div class="fv-row mb-10 col-md-12">
         <!--begin::Label-->
         <label class="fw-bold fs-6 mb-2">Bill No</label>
@@ -171,8 +164,8 @@
     </div>
 </div>
 	 <!--begin::Input group-->
-     <div class="col">
-	 <div class="fv-row mb-10 col-md-10">
+        <div class="col">
+	    <div class="fv-row mb-10 col-md-10">
         <!--begin::Label-->
         <label class="fw-bold fs-6 mb-2">Amount</label>
         <!--end::Label-->
@@ -189,21 +182,17 @@
         <!--begin::Input-->
         <input type="text" id="from" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
-    </div>
-</div>
-<div class="row">
-<div class="col"> 
+        </div>
+   </div>
+    <div class="row">
+    <div class="col"> 
         <label for="" class="form-label">For</label>
         <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
 		<option disabled selected >select..</option>
-        <option value="Frontier Agrotech Pvt Ltd">Frontier Agrotech Pvt Ltd</option>
-       <option value="FAPL">FAPL</option>
-       <option value="FPCL">FPCL</option>
-       <option value="Eternity Forward">Eternity Forward</option>
-       <option value="Frontier Ventures Pvt Ltd">Frontier Ventures Pvt Ltd</option>
-       <option value="Fcc Agchem Services">Fcc Agchem Services</option>
-       <option value="Frontier Construction Company">Frontier Construction Company</option>
-      <option>other</option>
+        @foreach($forcompany as $forcomp)
+            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
+		@endforeach
+        <option>other</option>
 
         </select><br>
 		<br>
@@ -235,7 +224,7 @@
 </div>
 
 <div class="row">
-   <div class="col"> 
+      <div class="col"> 
         <label for="" class="form-label">Courier Name</label>
         <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
 		<option disabled selected >select..</option>
@@ -255,14 +244,9 @@
         <label for="" class="form-label">Add Department</label>
         <select class="form-select form-select-solid" id="department" name="department" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
 		<option disabled selected >select..</option>
-       <option value="Admin">Admin</option>
-       <option value="Accounts">Accounts</option>
-       <option value="Agency">Agency</option>
-       <option value="SD-1">SD-1</option>
-       <option value="SD-3">SD-3</option>
-       <option value="Eternity">Eternity</option>
-       <option value="Legal">Legal</option>
-       <option value="IT">IT</option>
+        @foreach($departs as $depart)
+            <option value="{{$depart->department}}">{{$depart->department}}</option>
+		@endforeach
       <option>other</option>
         </select>
         <br>
@@ -278,13 +262,9 @@
         <label for="" class="form-label">Add Catagories</label>
         <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="catCheck(this);"> 
 		<option disabled selected >select..</option>
-		
-            <option value="Agrements">Agrements</option>
-            <option value="Rent Agrement">Rent Agrement</option>
-            <option value="Distributor Agrement">Distributor Agrements</option>
-            <option value="Transport Bills">Transport Bills</option>
-            <option value="Courier Bills">Courier Bills</option>
-		
+		@foreach($categorys as $category)
+            <option value="{{$category->catagories}}">{{$category->catagories}}</option>
+		@endforeach
       <option>other</option>
 
         </select><br>
