@@ -151,19 +151,16 @@ th {
             <!--begin::Radio-->
             <div class="form-check form-check-inline">
                 <!--begin::Input-->
-                <input class="form-check-input me-3" name="chkPassPort" type="radio" onclick="ShowHideDiv()" value="other" id="chkYes" />
+                <input class="form-check-input me-3" name="type" type="radio" value="Other" id="kt_docs_formvalidation_radio_option_4" />
                 <!--end::Input-->
 
                 <!--begin::Label-->
-                <label class="form-check-label" for="chkYes">
+                <label class="form-check-label" for="kt_docs_formvalidation_radio_option_4">
                     <div class="fw-bolder text-gray-800">Other</div>
                 </label>
                 <!--end::Label-->
             </div>
-            <div id="dvPassport" style="display: none">
-        other:
-        <input type="text" id="txtPassportNumber" />
-    </div>
+           
             <!--end::Radio-->
         </div>
 </div>
