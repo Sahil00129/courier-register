@@ -191,12 +191,13 @@ overflow-y:scroll;
 						</tbody>
                         <tfoot>
                              <tr>
-                               <th class="min-w-125px">Date of Receipt</th>
+                             <th class="min-w-125px">Date of Receipt</th>
 								<th class="min-w-125px">Docket No</th>
 								<th class="min-w-125px">Docket Date</th>
                                 <th class="min-w-125px">Name</th>
 								<th class="min-w-125px">Location</th>
 								<th class="min-w-125px">Telephone No</th>
+                                <th class="min-w-125px">For</th>
 								<th class="min-w-125px">Document Details</th>
 								<th class="min-w-125px">Courier Company</th>
 								<th class="min-w-125px">Catagories</th>
