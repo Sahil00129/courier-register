@@ -92,11 +92,11 @@
 
 				<div class="container mt-5">
                 <h3><b>Sender Details</b></h3>
-     <form id="newSender" method="post">
+     <form id="newSender" method="post" class="specify-numbers-price">
          @csrf
-             <div class="row">
-             <div class="col">
-	      	<div class="fv-row mb-10">
+         <div class="row">
+         <div class="col">
+		<div class="fv-row mb-10">
         <!--begin::Label-->
        
               <label class="fw-bold-gray fs-6 mb-2 editlable">From</label>
@@ -128,178 +128,203 @@
    </div>
 
     <h3><b><u>Courier Details</u></b></h3>
-	<div class="row">
-    <div class="col"> 
-        <label for="" class="form-label editlable">Courier Name</label>
-        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
-		<option disabled selected >select..</option>
-		@foreach($couriers as $courier)
-            <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
-		@endforeach
-      <option>other</option>
-
-        </select><br>
-		<br>
+	       <div class="row">
+              <div class="col"> 
+                   <label for="" class="form-label editlable">Courier Name</label>
+                     <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
+	             	<option disabled selected >select..</option>
+	             	@foreach($couriers as $courier)
+                    <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
+	             	@endforeach
+                    <option>other</option>
+                </select><br>
+	        	<br>
 		<div id="ifYes" style="display: none;">
-		<input type="text" id="other" name="other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-
- </div>
-    <div class="col">
-	 <div class="fv-row mb-10 col-md-16">
-        <!--begin::Label-->
-        <label class="fw-bold-gray fs-6 mb-2 editlable">Docket No.</label>
-        <!--end::Label-->
-
-        <!--begin::Input-->
-        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
+		<input type="text" id="other" name="other_courier" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+        </div><br>
+       </div>
+              <div class="col">
+	             <div class="fv-row mb-10 col-md-16">
+                   <!--begin::Label-->
+                     <label class="fw-bold-gray fs-6 mb-2 editlable">Docket No.</label>
+                   <!--end::Label-->
+                  <!--begin::Input-->
+                    <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
+                  <!--end::Input-->
+                  </div>
+               </div>
+             <div class="col">
+	        <!--begin::Input group-->
+        	 <div class="fv-row mb-10 col-md-12">
+            <!--begin::Label-->
+            <label class="fw-bold-gray fs-6 mb-2 editlable">Docket Date</label>
+              <!--end::Label-->
+                 <!--begin::Input-->
+                    <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
         <!--end::Input-->
-    </div>
-</div>
-<div class="col">
-	 <!--begin::Input group-->
-	 <div class="fv-row mb-10 col-md-12">
-        <!--begin::Label-->
-        <label class="fw-bold-gray fs-6 mb-2 editlable">Docket Date</label>
-        <!--end::Label-->
+              </div>
+           </div>
+        </div>
+          <div class="insertRowAfter">
+            <h3><b>Document Details</b></h3>
+               <div id="output"></div>
+                    <div id="appendRow" enctype="multipart/form-data">
+      
+                      <div class="row">    
+                           <div class="col"> 
+                     <label for="" class="form-label editlable" >Add Catagories</label>
+                    <select class="form-select form-select-solid" id="catagories" name="catagories[]" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
+		            <option disabled selected >select..</option>
+		             @foreach($categorys as $category)
+                    <option value="{{$category->catagories}}">{{$category->catagories}}</option>
+	             	@endforeach
+                   <option>Other</option>
+               </select><br>
+             <!--  <div id="catYes" style="display: none;">
+		    <input type="text" id="other_cat" name="other_cat" class="form-control form-control-solid mb-3  mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+            </div><br> -->
+          </div>
+             <div class="col"> 
+                 <label for="" class="form-label editlable">For</label>
+                    <select class="form-select form-select-solid" id="for" name="for[]" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
+	        	<option disabled selected >select..</option>
+             @foreach($forcompany as $forcomp)
+            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
+	     	@endforeach
+            <option>other</option>
+        </select><br>
+        
+		<br>
+    <!--	<div id="forYes" style="display: none;">
+		<input type="text" id="cfor" name="cfor" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+        </div><br> -->
 
-        <!--begin::Input-->
-        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
-        <!--end::Input-->
-    </div>
-    </div>
-    </div>
-
-    <h3><b>Document Details</b></h3>
-    <div class="row">
-    <div class="col">
+        </div>
+        </div>
+      <div class="row">
+      <div class="col">
     	 <!--begin::Input group-->
-	 <div class="fv-row mb-10 col-md-12">
-        <!--begin::Label-->
-        <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label>
-        <!--end::Label-->
+	         <div class="fv-row mb-10 col-md-12" id="catBill" style="display: none;">
+             <!--begin::Label-->
+             <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label>
+             <!--end::Label-->
 
-        <!--begin::Input-->
-        <input type="text" id="bill" name="bill" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+           <!--begin::Input-->
+                 <input type="text" id="bill" name="bill[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
-    </div>
-</div>
+        </div>
+        </div>
 	 <!--begin::Input group-->
         <div class="col">
-	    <div class="fv-row mb-10 col-md-10">
-        <!--begin::Label-->
-        <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" id="amount" name="amount" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
+	    <div class="fv-row mb-10 col-md-10" id="catamt" style="display: none;">
+            <!--begin::Label-->
+            <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label>
+             <!--end::Label-->
+             <!--begin::Input-->
+            <input type="text" id="amount" name="amount[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
         <!--end::Input-->
     </div>
-</div>
+   </div>
 
-<div class="fv-row mb-10 col-md-4">
+   <div class="fv-row mb-10 col-md-4" id="catfrom" style="display: none;">
         <!--begin::Label-->
         <label class="fw-bold-gray fs-6 mb-2 editlable">From</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="from" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="from" name="from[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
         </div>
    </div>
     <div class="row">
-    <div class="col"> 
-        <label for="" class="form-label editlable">For</label>
-        <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
-		<option disabled selected >select..</option>
-        @foreach($forcompany as $forcomp)
-            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
-		@endforeach
-        <option>other</option>
-
-        </select><br>
-		<br>
-		<div id="forYes" style="display: none;">
-		<input type="text" id="for_other" name="for_other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-
- </div>
+    
 	 <!--begin::Input group-->
      <div class="col">
-	 <div class="fv-row mb-10 col-md-10 editlable">
+	 <div class="fv-row mb-10 col-md-10 editlable" id="catmonth" style="display: none;">
         <!--begin::Label-->
         <label class="fw-bold-gray fs-6 mb-2">Month</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="month" name="month" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
+        <input type="text" id="month" name="month[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
         <!--end::Input-->
     </div>
-</div>
+   </div>
 
-<div class="fv-row mb-10 col-md-4">
+    <div class="fv-row mb-10 col-md-4" id="catother" style="display: none;">
         <!--begin::Label-->
         <label class="fw-bold-gray fs-6 mb-2 editlable">Other</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="other_detail" name="other_detail" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+        <input type="text" id="other_detail" name="other_detail[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
     </div>
-</div>
-<h3><b>Users Tag</b></h3>
-<div class="row">    
- <div class="col"> 
-        <label for="" class="form-label editlable" >Add Department</label>
-        <select class="form-select form-select-solid" id="department" name="department" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
-		<option disabled selected >select..</option>
-        @foreach($departs as $depart)
-            <option value="{{$depart->department}}">{{$depart->department}}</option>
-		@endforeach
-      <option>other</option>
-        </select>
-        <br>
-		<div id="Yes" style="display: none;">
-		<input type="text" id="other_dept" name="other_dept" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-		
+  </div>
+   <div class="row">
+    
+    <!--begin::Input group-->
+    <div class="col">
+    <div class="fv-row mb-10 col-md-10 editlable" id="catagree" style="display: none;">
+       <!--begin::Label-->
+       <label class="fw-bold-gray fs-6 mb-2">Financial document</label>
+       <!--end::Label-->
+       <!--begin::Input-->
+       <input type="text" id="financial" name="financial[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/>
+       <!--end::Input-->
+   </div>
     </div>
-   <div class="col"> 
-        <label for="" class="form-label editlable" >Add Catagories</label>
-        <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="catCheck(this);"> 
-		<option disabled selected >select..</option>
-		@foreach($categorys as $category)
-            <option value="{{$category->catagories}}">{{$category->catagories}}</option>
-		@endforeach
-      <option>other</option>
 
-        </select><br>
-        <div id="catYes" style="display: none;">
-		<input type="text" id="other_cat" name="other_cat" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-</div>
-</div>
-
-
-		<button type="submit" class="btn btn-danger">
-            <span class="indicator-label">Submit</span>
-		<span class="indicator-progress">Please wait...
-		<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-		</button>
+           <div class="fv-row mb-10 col-md-4" id="catment" style="display: none;">
+          <!--begin::Label-->
+          <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label>
+          <!--end::Label-->
+           <!--begin::Input-->
+           <input type="text" id="kyc" name="kyc[]" class="form-control form-control-solid mb-3 mb-lg-0"      placeholder="" value="" />
+           <!--end::Input-->
+             </div>
+         </div>
     </div>
-</form>		
-</div>
-
+  </div>
+       </div>
+       <div class="row">
+             <div class="col addrow">
+                <div class="mb-3"><h6 style="background: rgb(238 231 18);padding: 5px 0;text-align: center;width:18%;float:right; ">Add Row</h6></div>
+                
+              </div>
+             </div>
+              <!--<button type="button" id="newsectionbtn" class="btn btn-warning" style="float: right;"><span     class="glyphicon glyphicon-plus-sign"></span>Add</button>  -->
+		      <button type="submit" class="btn btn-danger" style="margin-left:75px;">
+                   <span class="indicator-label">Submit</span>
+		           <span class="indicator-progress">Please wait...
+	         	<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+	       	</button>
+          </div>
+     </form>		
+    </div>
 <!--end::Card body-->
-
 			</div>
-
 			<!--end::Card-->
-
 		</div>
-
 		<!--end::Container-->
-
 	</div>
 
 	<!--end::Post-->
+      </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script>
+                   
+    $(document).ready(function(){
+      
+    $('.addrow').on('click', function(){
+    var appendData ='<div class="insertRowAfter1"> <h3> <b>Document Details</b> </h3> <div class="row"> <div class="col"> <label for="" class="form-label editlable">Add Catagories</label> <select class="form-select form-select-solid" id="catagories" name="catagories[]" data-control="select2" data-placeholder="~~Select~~" onchange="rowCheck(this);"> <option disabled selected>select..</option>@foreach($categorys as $category) <option value="{{$category->catagories}}">{{$category->catagories}}</option>@endforeach <option>Other</option> </select> <br></div><div class="col"> <label for="" class="form-label editlable">For</label> <select class="form-select form-select-solid" id="for" name="for[]" data-control="select2" data-placeholder="~~Select~~" onchange="" required> <option disabled selected>select..</option> @foreach($forcompany as $forcomp) <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>@endforeach <option>other</option> </select> <br><br></div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-12" id="newbill" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label> <input type="text" id="bill" name="bill[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value=""/> </div></div><div class="col"> <div class="fv-row mb-10 col-md-10" id="newAmt" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label> <input type="text" id="amount" name="amount[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/> </div></div><div class="fv-row mb-10 col-md-4" id="newFrom" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">From</label> <input type="text" id="from" name="from[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="newMonth" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">Month</label> <input type="text" id="month" name="month[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/> </div></div><div class="fv-row mb-10 col-md-4" id="catother" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Other</label> <input type="text" id="other_detail" name="other_detail[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="nfinancial" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">financial document</label> <input type="text" id="financial" name="financial[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%;"/> </div></div><div class="fv-row mb-10 col-md-4" id="nkyc" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label> <input type="text" id="kyc" name="kyc[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value=""/> </div></div> <button type="button" class="btn btn-primary" id="remove"><i class="fa fa-trash"></button></div>';            
+    $(appendData).insertAfter('.insertRowAfter'); 
+     
+     });
 
-</div>
+    });
+
+    $(document).on('click','#remove', function(){
+     
+      $(this).closest('.insertRowAfter1').remove();
+    });
+    </script>
 
 @endsection

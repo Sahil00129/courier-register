@@ -131,6 +131,22 @@
 
     <h3><b><u>Courier Details</u></b></h3>
 	<div class="row">
+    <div class="col"> 
+        <label for="" class="form-label">Courier Name</label>
+        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
+        <option value="{{$sender->courier_name}}" selected >{{$sender->courier_name}}</option>
+		@foreach($couriers as $courier)
+            <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
+		@endforeach
+      <option>other</option>
+
+        </select><br>
+		<br>
+		<div id="ifYes" style="display: none;">
+		<input type="text" id="other" name="other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+ </div><br>
+
+ </div>
     <div class="col">
 	 <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
@@ -155,127 +171,24 @@
     </div>
 </div>
 </div>
-<?php
+<!--
  $l = (explode(",",$sender->document_details));
  //echo'<pre>'; print_r($l); die;
    $bill = @$l[0];
    $amount = @$l[1];
    $from = @$l[2];
-   $for = @$l[3];
-   $month = @$l[4];
-   $other = @$l[5];
-?>
-<h3><b><u>Courier Details</u></b></h3>
+   $month = @$l[3];
+   $financial = @$l[4];
+   $kyc = @$l[5];
+-->
+<h3><b><u>Document Details</u></b></h3>
 <div class="row">
-<div class="col">
-	 <!--begin::Input group-->
-	 <div class="fv-row mb-10 col-md-12">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Bill No</label>
-        <!--end::Label-->
-
-        <!--begin::Input-->
-        <input type="text" id="bill" name="bill" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$bill}}" />
-        <!--end::Input-->
-    </div>
-</div>
-	 <!--begin::Input group-->
-     <div class="col">
-	 <div class="fv-row mb-10 col-md-10">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Amount</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" id="amount" name="amount" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$amount}}" style="width:119%;"/>
-        <!--end::Input-->
-    </div>
-</div>
-
-<div class="fv-row mb-10 col-md-4">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">From</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" id="from" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$from}}" />
-        <!--end::Input-->
-    </div>
-</div>
-<div class="row">
-<div class="col"> 
-        <label for="" class="form-label">For</label>
-        <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
-	   	<option value="{{$for}}" selected >{{$for}}</option>
-           @foreach($forcompany as $forcomp)
-            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
-		@endforeach
-      <option>other</option>
-
-        </select><br>
-		<br>
-		<div id="forYes" style="display: none;">
-		<input type="text" id="for_other" name="for_other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-
- </div>
-	 <!--begin::Input group-->
-     <div class="col">
-	 <div class="fv-row mb-10 col-md-10">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Month</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" id="month" name="month" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$month}}" style="width:119%;"/>
-        <!--end::Input-->
-    </div>
-</div>
-
-<div class="fv-row mb-10 col-md-4">
-        <!--begin::Label-->
-        <label class="fw-bold fs-6 mb-2">Other</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" id="other_detail" name="other_detail" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$other}}" />
-        <!--end::Input-->
-    </div>
-</div>
-
-<div class="row">
-   <div class="col"> 
-        <label for="" class="form-label">Courier Name</label>
-        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
-        <option value="{{$sender->courier_name}}" selected >{{$sender->courier_name}}</option>
-		@foreach($couriers as $courier)
-            <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
-		@endforeach
-      <option>other</option>
-
-        </select><br>
-		<br>
-		<div id="ifYes" style="display: none;">
-		<input type="text" id="other" name="other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-
- </div>
- <div class="col"> 
-        <label for="" class="form-label">Add Department</label>
-        <select class="form-select form-select-solid" id="department" name="department" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
-		<option value="{{$sender->department}}" selected >{{$sender->department}}</option>
-        @foreach($forcompany as $forcomp)
-            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
-		@endforeach
-      <option>other</option>
-        </select>
-        <br>
-		<div id="Yes" style="display: none;">
-		<input type="text" id="other_dept" name="other_dept" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
-		
-</div>
 <div class="col">
 <label for="" class="form-label">Add Catagories</label>
-        <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="catCheck(this);"> 
+        <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
 		<option value="{{$sender->catagories}}" selected >{{$sender->catagories}}</option>
         @foreach($categorys as $category)
+        
             <option value="{{$category->catagories}}">{{$category->catagories}}</option>
 		@endforeach
 		
@@ -284,17 +197,100 @@
         </select><br>
         <div id="catYes" style="display: none;">
 		<input type="text" id="other_cat" name="other_cat" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+   </div><br>
+   </div>
+   <div class="col"> 
+        <label for="" class="form-label">For</label>
+        <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
+	   	<option value="{{$sender->for}}" selected >{{$sender->for}}</option>
+           @foreach($forcompany as $forcomp)
+            <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
+		@endforeach
+      <option>other</option>
+        </select><br>
+		<br>
+		<div id="forYes" style="display: none;">
+		<input type="text" id="for_other" name="for_other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
  </div><br>
+
+ </div>
 </div>
 
-</div>
-
-
-<!--end::solid autosize textarea-->
 <div class="row">
+<div class="col">
 
-<div class="col"> 
-<div class="fv-row mb-10 col-md-16">
+	 <!--begin::Input group-->
+	 <div class="fv-row mb-10 col-md-12" id="catBill" style="display: none;">
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2" >Bill No</label>
+        <!--end::Label-->
+
+        <!--begin::Input-->
+        <input type="text" id="bill" name="bill" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->bill}}" />
+        <!--end::Input-->
+    </div>
+</div>
+	 <!--begin::Input group-->
+     <div class="col">
+	 <div class="fv-row mb-10 col-md-10"  id="catamt" style="display: none;">
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2">Amount</label>
+        <!--end::Label-->
+        <!--begin::Input-->
+        <input type="text" id="amount" name="amount" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->amount}}" style="width:119%;"/>
+        <!--end::Input-->
+    </div>
+</div>
+
+</div>
+<div class="row">
+<div class="col" id="catfrom" style="display: none;" >
+
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2">From</label>
+        <!--end::Label-->
+        <!--begin::Input-->
+        <input type="text" id="from" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->from}}" />
+        <!--end::Input-->
+   
+</div>
+	 <!--begin::Input group-->
+     <div class="col">
+	 <div class="fv-row mb-10 col-md-10" id="catmonth" style="display: none;">
+        <!--begin::Label-->
+        <label class="fw-bold fs-6 mb-2">Month</label>
+        <!--end::Label-->
+        <!--begin::Input-->
+        <input type="text" id="month" name="month" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->month}}" style="width:119%;"/>
+        <!--end::Input-->
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col">
+    <div class="fv-row mb-10 col-md-10 editlable" id="catagree" style="display: none;">
+       <!--begin::Label-->
+       <label class="fw-bold-gray fs-6 mb-2">Financial document</label>
+       <!--end::Label-->
+       <!--begin::Input-->
+       <input type="text" id="financial" name="financial" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->financial}}" style="width:119%;"/>
+       <!--end::Input-->
+   </div>
+    </div>
+    <div class="fv-row mb-10 col-md-4" id="catment" style="display: none;">
+          <!--begin::Label-->
+          <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label>
+          <!--end::Label-->
+           <!--begin::Input-->
+           <input type="text" id="kyc" name="kyc" class="form-control form-control-solid mb-3 mb-lg-0"      placeholder="" value="{{$sender->kyc}}" />
+           <!--end::Input-->
+             </div>
+   </div>
+   <!--end::solid autosize textarea-->
+   <div class="row">
+
+   <div class="col"> 
+   <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
         <label class="fw-bold fs-6 mb-2">Given To</label>
         <!--end::Label-->
@@ -302,10 +298,10 @@
         <!--begin::Input-->
         <input type="text" id="given_to" name="given_to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->given_to}}" />
         <!--end::Input-->
-    </div>
-</div>
-<div class="col"> 
-<div class="fv-row mb-10 col-md-16">
+     </div>
+     </div>
+     <div class="col"> 
+     <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
         <label class="fw-bold fs-6 mb-2">Checked By</label>
         <!--end::Label-->
@@ -313,10 +309,10 @@
         <!--begin::Input-->
         <input type="text" id="checked_by" name="checked_by" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->checked_by}}" />
         <!--end::Input-->
-    </div>
-</div>
+     </div>
+     </div>
+     </div>
 
-</div>
 
 		<button type="submit" class="btn btn-danger">Update</button>
     </div>

@@ -49,7 +49,7 @@ div#ignoredItems {
 									<!--begin::Wrapper-->
 									<!--end::Wrapper-->
 									<a href="{{ url('courier-company') }}" class="btn btn-sm btn-primary" >Courier Companies</a> ||
-									<a href="{{ url('department') }}" class="btn btn-sm btn-primary" >Department</a> ||
+									
 									<!--begin::Button-->
 									<a href="{{ url('catagories') }}" class="btn btn-sm btn-primary">Categories</a>||
 									<a href="{{ url('for-company') }}" class="btn btn-sm btn-primary" >For</a> 

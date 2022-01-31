@@ -104,22 +104,84 @@
 }
 //
 function depCheck(that) {
-    if (that.value == "other") {
-        document.getElementById("Yes").style.display = "block";
-    } else {
-        document.getElementById("Yes").style.display = "none";
+    if (that.value == "Agreement") {
+        document.getElementById("catagree").style.display = "block";
+        document.getElementById("catment").style.display = "block";
+    } else if (that.value == "Rent Agreement"){
+        document.getElementById("catagree").style.display = "block";
+        document.getElementById("catment").style.display = "block";
+     } else if (that.value == "Distributor Agreement"){
+        document.getElementById("catagree").style.display = "block";
+        document.getElementById("catment").style.display = "block";
+    } else{
+        document.getElementById("catagree").style.display = "none";
+        document.getElementById("catment").style.display = "none";   
+    }
+
+    if(that.value == "Transport Bills"){
+        document.getElementById("catBill").style.display = "block";
+        document.getElementById("catamt").style.display = "block";
+        document.getElementById("catfrom").style.display = "block";
+        document.getElementById("catmonth").style.display = "block";
+    }else if (that.value == "Courier Bills"){
+        document.getElementById("catBill").style.display = "block";
+        document.getElementById("catamt").style.display = "block";
+        document.getElementById("catfrom").style.display = "block";
+        document.getElementById("catmonth").style.display = "block";
+    }else{
+        document.getElementById("catBill").style.display = "none";
+        document.getElementById("catamt").style.display = "none"; 
+        document.getElementById("catfrom").style.display = "none";
+        document.getElementById("catmonth").style.display = "none";
     }
 }
 //
-function catCheck(that) {
-    if (that.value == "other") {
-        document.getElementById("catYes").style.display = "block";
-    } else {
-        document.getElementById("catYes").style.display = "none";
+//////new section/////
+//document.getElementById("newsectionbtn").onclick = function() {
+ // var container = document.getElementById("container");
+// var section = document.getElementById("mainsection");
+ // container.appendChild(section.cloneNode(true));
+//}
+///
+
+
+
+///////////////////////////////////////////////////////////
+  function rowCheck(that) {
+      if (that.value == "Agreement") {
+        document.getElementById("nfinancial").style.display = "block";
+        document.getElementById("nkyc").style.display = "block";
+      } else if (that.value == "Rent Agreement"){
+        document.getElementById("nfinancial").style.display = "block";
+        document.getElementById("nkyc").style.display = "block";
+      } else if (that.value == "Distributor Agreement"){
+        document.getElementById("nfinancial").style.display = "block";
+        document.getElementById("nkyc").style.display = "block";
+     } else{
+        document.getElementById("nfinancial").style.display = "none";
+        document.getElementById("nkyc").style.display = "none";   
+     }
+
+    if(that.value == "Transport Bills"){
+        document.getElementById("newbill").style.display = "block";
+        document.getElementById("newAmt").style.display = "block";
+        document.getElementById("newFrom").style.display = "block";
+        document.getElementById("newMonth").style.display = "block";
+    }else if (that.value == "Courier Bills"){
+        document.getElementById("newbill").style.display = "block";
+        document.getElementById("newAmt").style.display = "block";
+        document.getElementById("newFrom").style.display = "block";
+        document.getElementById("newMonth").style.display = "block";
+    }else{
+        document.getElementById("newbill").style.display = "none";
+        document.getElementById("newAmt").style.display = "none"; 
+        document.getElementById("newFrom").style.display = "none";
+        document.getElementById("newMonth").style.display = "none";
     }
 }
 
-///
+
+////////////////////////////////////////////////////////////
 function forCheck(that) {
     if (that.value == "other") {
         document.getElementById("forYes").style.display = "block";
@@ -135,7 +197,7 @@ function forCheck(that) {
         if (!slct) {
         swal("Error!", "Please select courier name", "error");
         return false;
-  }
+       }
 			//alert (this); die;
 				$.ajax({
 					  url: "/save-newSender", 
@@ -145,7 +207,7 @@ function forCheck(that) {
 					  processData: false,
 					  contentType: false,
                        beforeSend: function(){
-                     $(".indicator-progress").show(); 
+                      $(".indicator-progress").show(); 
                       $(".indicator-label").hide();
         
                       },
@@ -168,13 +230,13 @@ function forCheck(that) {
                         }
 				}); 
 			});	
-
  </script>
     @if(Session::has('deleted'))
 <script>
 	swal("Deleted", "Data has been Deleted","success");
 </script>
 	@endif
+
 
   </script>
     @if(Session::has('update'))
@@ -183,3 +245,4 @@ function forCheck(that) {
 </script>
 	@endif
 
+    

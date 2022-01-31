@@ -299,9 +299,9 @@
 										<tr class="fw-bolder text-muted">
 										     <th>Docket No</th>
 											 <th>Docket Date</th>
-											<th >Name</th>
-											<th >Location</th>
-											<th >Courier Name</th>
+											<th>Name</th>
+											<th>Location</th>
+											<th>Courier Name</th>
 										</tr>
 									</thead>
 									<!--end::Table head-->

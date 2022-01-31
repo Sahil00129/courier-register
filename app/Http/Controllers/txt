@@ -55,15 +55,13 @@ class SenderDetailsController extends Controller
             $output = '';
             if (count($data)>0) {
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
-                //echo'<pre>'; print_r($output); die;
                 foreach ($data as $row) {
                    //echo'<pre>'; print_r($row->name);die;
                     $output .= '<li class="list-group-item">'.$row->name.'-'.$row->location.'-'.$row->telephone_no.'</li>';  
                 }
                 $output .= '</ul>';
             }else {
-                $output .= '<li class="list-group-item disabled">'.'No Data Found'.'</li> <a href="'.url('sender-details').'" class="btn btn-sm btn-primary" >Add Sender</a>'
-                ;
+                $output .= '<li class="list-group-item">'.'No Data Found'.'</li>';
             }
             return $output;
         }
@@ -95,61 +93,71 @@ class SenderDetailsController extends Controller
         
 
     } */
-////////////////////////////////////////////////////////////////////////////////////////////////
+
     public function newCreate(Request $request)
     {
-      // echo"<pre>"; print_r($_POST); die;
+        //echo"<pre>"; print_r($_POST); die;
+        $sender = new CourierSender;
+        $sender->name_company = $request->name_company; 
+        $sender->location = $request->location;
+        $sender->docket_no = $request->docket_no;
+        $sender->docket_date = $request->docket_date;
+       
+        $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
+        
+        if($request->for == "other"){
+         $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for_other.', '.$request->month.', '.$request->other_detail;
+         $forcompany = new ForCompany;
+         $forcompany->for_company = $request->for_other;
+         $forcompany->save();
+        }else{
+         $sender->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
+        }
 
-       $name_company = $request->name_company; 
-       $location = $request->location;
-       $docket_no = $request->docket_no;
-       $docket_date = $request->docket_date;
-       $telephone_no = $request->telephone_no;
-       $courier_name = $request->slct;
-       if( $request->slct == 'other'){
-         $courier_name = $request->other_courier;
-         $cmpny = new CourierCompany;
-         $cmpny->courier_name = $request->other_courier;
-         $cmpny->save();
-       }else{
-        $courier_name = $request->slct;
-       }
+        $sender->telephone_no = $request->telephone_no;
+        $sender->given_to = $request->given_to;
+        $sender->department = $request->department;
+        if($request->department == "other"){
+         $sender->department = $request->other_dept;
+         $department = new Department;
+         $department->department = $request->other_dept;
+         $department->save();
+        }else{
+         $sender->department = $request->department;
+        }
 
+        $sender->catagories = $request->catagories;
+        if($request->catagories == "other"){
+         $sender->catagories = $request->other_cat;
+         $category = new Category;
+         $category->catagories = $request->other_cat;
+         $category->save();
 
-       foreach($_POST['catagories'] as $key => $value){
-        //$sender = new CourierSender;
-            $sender = ([
-                  'name_company' => $name_company,
-                  'location' => $location,
-                  'docket_no' => $docket_no,
-                  'docket_date' => $docket_date,
-                  'telephone_no' => $telephone_no,
-                  'courier_name' => $courier_name,
-                  'catagories' => $value,
-                  'for' => $_POST['for'][$key],
-                  'bill' => $_POST['bill'][$key],
-                  'amount' => $_POST['amount'][$key],
-                  'from' => $_POST['from'][$key],
-                  'month' => $_POST['month'][$key],
-                  'financial' => $_POST['financial'][$key],
-                  'kyc' => $_POST['kyc'][$key],
-                 
+        }else{
+         $sender->catagories = $request->catagories;
+        }
 
-            ]);
-          //echo'<pre>'; print_r($sender); die;
-           DB::table('new_courier_sender')->insert($sender);
+        $sender->courier_name = $request->slct; 
+         if($request->slct == "other"){
+          $sender->courier_name = $request->other;
+          $cmpny = new CourierCompany;
+          $cmpny->courier_name = $request->other;
+          $cmpny->save();
 
-       }
+         }else{
+          $sender->courier_name = $request->slct;  
+         } 
+
+         
+
+         $sender->save();
+          
+       
+        //echo'<pre>'; print_r($request->other); die;
 
         $response['success'] = true;
         $response['messages'] = 'Succesfully Submitted';
         return Response::json($response);
-        //'bill' => $_POST['bill'][$key],
-        //'amount' => $_POST['amount'][$key],
-        //'from' => $_POST['from'][$key],
-        //'month' => $_POST['month'][$key],
-        //'financial' => $_POST['financial'][$key],
-        //'kyc' => $_POST['kyc'][$key],
         
     }
 
@@ -170,8 +178,10 @@ class SenderDetailsController extends Controller
       $departs = DB::table('departments')->select ('department')->distinct()->get();
       $categorys = DB::table('catagories')->select ('catagories')->distinct()->get();
       $forcompany = DB::table('for_companies')->select ('for_company')->distinct()->get();
-      //echo'<pre>'; print_r($sender); die;
-      return view('update',compact('sender','couriers','departs','categorys','forcompany'));                   // return view('update',  ['sender' => $sender]);
+
+          //echo'<pre>'; print_r($sender); die;
+          return view('update',compact('sender','couriers','departs','categorys','forcompany'));
+         // return view('update',  ['sender' => $sender]);
     }
 
     public function update(Request $request,$id)
@@ -184,24 +194,54 @@ class SenderDetailsController extends Controller
       $senders->docket_date = $request->docket_date;
       //$months = $request->docket_date;
       //$chg = date('F Y', strtotime($months));
-      $senders->courier_name = $request->slct;
-      $senders->docket_date = $request->docket_date;
-      $senders->docket_no = $request->docket_no;
-      $senders->docket_date = $request->docket_date;
-      $senders->for = $request->for;
-      $senders->bill = $request->bill;
-      $senders->amount = $request->amount;
-      $senders->from = $request->from;
-      $senders->month = $request->month;
-      $senders->financial = $request->financial;
-      $senders->kyc = $request->kyc;
+      $senders->document_details = $request->bill.','.$request->amount.','.$request->from.','.$request->for.','.$request->month.','.$request->other_detail;
+      if($request->for == "other"){
+         $senders->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for_other.', '.$request->month.', '.$request->other_detail;
+         $forcompany = new ForCompany;
+         $forcompany->for_company = $request->for_other;
+         $forcompany->save();
+        }else{
+         $senders->document_details = $request->bill.', '.$request->amount.', '.$request->from.', '.$request->for.', '.$request->month.', '.$request->other_detail;
+        }
       $senders->given_to = $request->given_to;
       $senders->checked_by = $request->checked_by;
 
+      $senders->department = $request->department;
+      if($request->department == "other"){
+       $senders->department = $request->other_dept;
+       $department = new Department;
+         $department->department = $request->other_dept;
+         $department->save();
+      }else{
+       $senders->department = $request->department;
+      }
+
+      $senders->catagories = $request->catagories;
+      if($request->catagories == "other"){
+       $senders->catagories = $request->other_cat;
+       $category = new Category;
+       $category->catagories = $request->other_cat;
+       $category->save();
+      }else{
+       $senders->catagories = $request->catagories;
+      }
+
+      $senders->courier_name = $request->slct;
+          
+      if($request->slct == "other"){
+       $senders->courier_name = $request->other;
+       $cmpny = new CourierCompany;
+       $cmpny->courier_name = $request->other;
+       $cmpny->save();
+
+      }else{
+       $senders->courier_name = $request->slct;  
+      } 
+       
       Session::flash('update', 'Data has been updated successfully');
       $senders->update();
+      
       return redirect('courier-list');
-
 
     }
 }

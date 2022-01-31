@@ -141,9 +141,9 @@ overflow-y:scroll;
                                 <th class="min-w-125px">Name</th>
 								<th class="min-w-125px">Location</th>
 								<th class="min-w-125px">Telephone No</th>
+                                <th class="min-w-125px">For</th>
 								<th class="min-w-125px">Document Details</th>
 								<th class="min-w-125px">Courier Company</th>
-                                <th class="min-w-125px">Department</th>
 								<th class="min-w-125px">Catagories</th>
                                 <th class="min-w-125px">Checked By</th>
                                 <th class="min-w-125px">Given To</th>
@@ -165,7 +165,11 @@ overflow-y:scroll;
                                $createDate = new DateTime($date);
                                $strip = $createDate->format('d-m-y');
 							   $newDate = date("d-m-Y", strtotime($cmpny['docket_date']));
-                               //print_r($strip); die;  
+                               //print_r($strip); die; 
+                              // $financial =  $cmpny['financial'];
+                               // $kyc = $cmpny['kyc'];
+                               $document =$cmpny['bill'].' '.$cmpny['amount'].' '.$cmpny['from'].' '.$cmpny['month'].' '.$cmpny['financial'].' '.$cmpny['kyc'];
+                              // print_r($document); die;
              		    	?>
              			<tr>
 							<td>{{$strip}}</td>
@@ -174,9 +178,9 @@ overflow-y:scroll;
                             <td>{{$n = $l[0]}}</td>	
 							<td>{{$cmpny->location}}</td>
 							<td>{{$cmpny->telephone_no}}</td>
-							<td>{{$cmpny->document_details}}</td>
+                            <td>{{$cmpny->for}}</td>
+							<td>{{$document}}</td>
 							<td>{{$cmpny->courier_name}}</td>
-                            <td>{{$cmpny->department}}</td>
                             <td>{{$cmpny->catagories}}</td>
                             <td>{{$cmpny->checked_by}}</td>
                             <td>{{$cmpny->given_to}}</td>
@@ -195,7 +199,6 @@ overflow-y:scroll;
 								<th class="min-w-125px">Telephone No</th>
 								<th class="min-w-125px">Document Details</th>
 								<th class="min-w-125px">Courier Company</th>
-                                <th class="min-w-125px">Department</th>
 								<th class="min-w-125px">Catagories</th>
                                 <th class="min-w-125px">Checked By</th>
                                 <th class="min-w-125px">Given To</th>

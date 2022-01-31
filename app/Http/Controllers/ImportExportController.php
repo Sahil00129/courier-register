@@ -136,8 +136,7 @@ class ImportExportController extends Controller
       $departs = DB::table('departments')->select ('department')->distinct()->get();
       $categorys = DB::table('catagories')->select ('catagories')->distinct()->get();
       $forcompany = DB::table('for_companies')->select ('for_company')->distinct()->get();
-
-             return view('pages.create-new',  ['couriers' => $couriers , 'departs' => $departs ,'categorys' => $categorys ,'forcompany' => $forcompany]);
+        return view('pages.create-new',  ['couriers' => $couriers , 'departs' => $departs ,'categorys' => $categorys ,'forcompany' => $forcompany]);
 
      }  
 
