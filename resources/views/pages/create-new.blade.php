@@ -285,9 +285,9 @@
   </div>
        </div>
        <div class="row">
-             <div class="col addrow">
-                <div class="mb-3"><h6 style="background: rgb(238 231 18);padding: 5px 0;text-align: center;width:18%;float:right; ">Add Row</h6></div>
-                
+             <div class="col">
+                <button class="btn btn-warning addrow" style="float:right;" type="button">Add</button>
+
               </div>
              </div>
               <!--<button type="button" id="newsectionbtn" class="btn btn-warning" style="float: right;"><span     class="glyphicon glyphicon-plus-sign"></span>Add</button>  -->
