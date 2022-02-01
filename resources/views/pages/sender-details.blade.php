@@ -93,7 +93,7 @@ th {
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="name" name="name" class="form-control form-control-solid mb-3 mb-lg-0" style="width:81%;" placeholder="" value="" required/>
+        <input type="text" id="name" name="name" class="form-control form-control-solid mb-3 mb-lg-0" style="width:81%; background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" required/>
         <!--end::Input-->
 </div>
     </div>
@@ -176,7 +176,7 @@ th {
         <!--end::Label-->
 
         <!--begin::Input-->
-        <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1"></textarea>
+        <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%; background-color: white; border: 1px solid #aea7a7;" rows="1" cols="1"></textarea>
         <!--end::Input-->
     </div>
 </div>
@@ -188,7 +188,7 @@ th {
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" required/>
+        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" required/>
         <!--end::Input-->
     </div>
      </div>
