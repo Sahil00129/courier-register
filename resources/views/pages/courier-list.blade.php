@@ -141,10 +141,10 @@ overflow-y:scroll;
                                 <th class="min-w-125px">Name</th>
 								<th class="min-w-125px">Location</th>
 								<th class="min-w-125px">Telephone No</th>
+                                <th class="min-w-125px">Catagories</th>
                                 <th class="min-w-125px">For</th>
 								<th class="min-w-125px">Document Details</th>
-								<th class="min-w-125px">Courier Company</th>
-								<th class="min-w-125px">Catagories</th>
+								<th class="min-w-125px">Courier Company</th>		
                                 <th class="min-w-125px">Checked By</th>
                                 <th class="min-w-125px">Given To</th>
 								<th class="min-w-125px">Action</th>
@@ -168,7 +168,7 @@ overflow-y:scroll;
                                //print_r($strip); die; 
                               // $financial =  $cmpny['financial'];
                                // $kyc = $cmpny['kyc'];
-                               $document =$cmpny['bill'].' '.$cmpny['amount'].' '.$cmpny['from'].' '.$cmpny['month'].' '.$cmpny['financial'].' '.$cmpny['kyc'];
+                               $document =$cmpny['bill'].' '.$cmpny['amount'].' '.$cmpny['from'].' '.$cmpny['month'].' '.$cmpny['financial'].' '.$cmpny['kyc'].' '.$cmpny['other_catagory'];
                               // print_r($document); die;
              		    	?>
              			<tr>
@@ -178,10 +178,10 @@ overflow-y:scroll;
                             <td>{{$n = $l[0]}}</td>	
 							<td>{{$cmpny->location}}</td>
 							<td>{{$cmpny->telephone_no}}</td>
+                            <td>{{$cmpny->catagories}}</td>
                             <td>{{$cmpny->for}}</td>
 							<td>{{$document}}</td>
 							<td>{{$cmpny->courier_name}}</td>
-                            <td>{{$cmpny->catagories}}</td>
                             <td>{{$cmpny->checked_by}}</td>
                             <td>{{$cmpny->given_to}}</td>
 							<td><a href="delete/{{$cmpny->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
@@ -197,10 +197,10 @@ overflow-y:scroll;
                                 <th class="min-w-125px">Name</th>
 								<th class="min-w-125px">Location</th>
 								<th class="min-w-125px">Telephone No</th>
+                                <th class="min-w-125px">Catagories</th>
                                 <th class="min-w-125px">For</th>
 								<th class="min-w-125px">Document Details</th>
-								<th class="min-w-125px">Courier Company</th>
-								<th class="min-w-125px">Catagories</th>
+								<th class="min-w-125px">Courier Company</th>		
                                 <th class="min-w-125px">Checked By</th>
                                 <th class="min-w-125px">Given To</th>
 								<th class="min-w-125px">Action</th>

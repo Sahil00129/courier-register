@@ -127,7 +127,6 @@ div#ignoredItems {
 																<option value="">Select...</option>
 																<option value="1">Sender Import</option>
 																<option value="2">Courier Companies</option>
-																<option value="3">Add Department</option>
 																<option value="4">Add Catagories</option>
 																<option value="5">For</option>
 															</select> 
@@ -166,5 +165,5 @@ div#ignoredItems {
 @endsection
 
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
-		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-		<script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>

@@ -106,13 +106,13 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%;" placeholder="" value="{{$sender->name_company}}" />
+        <input type="text" id="" name="name_company" class="form-control form-control-solid mb-3 mb-lg-0" style="width:95%; background-color: white; border: 1px solid #aea7a7;" placeholder="" value="{{$sender->name_company}}" />
         <!--end::Input-->
        </div>
       </div>
       <div class="col">
        <label for="" class="form-label">Location</label>
-    <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%;" rows="1" cols="1" value="">{{$sender->location}}</textarea>
+    <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%; background-color: white; border: 1px solid #aea7a7;" rows="1" cols="1" value="">{{$sender->location}}</textarea>
     </div>
 
  
@@ -123,7 +123,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->telephone_no}}" />
+        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->telephone_no}}" style="background-color: white; border: 1px solid #aea7a7;" />
         <!--end::Input-->
     </div>
 </div>
@@ -133,7 +133,7 @@
 	<div class="row">
     <div class="col"> 
         <label for="" class="form-label">Courier Name</label>
-        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" required> 
+        <select class="form-select form-select-solid" id="slct" name="slct" data-control="select2" data-placeholder="~~Select~~" onchange="yesnoCheck(this);" style="background-color: white; border: 1px solid #aea7a7;" required> 
         <option value="{{$sender->courier_name}}" selected >{{$sender->courier_name}}</option>
 		@foreach($couriers as $courier)
             <option value="{{$courier->courier_name}}">{{$courier->courier_name}}</option>
@@ -154,7 +154,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->docket_no}}" required/>
+        <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="{{$sender->docket_no}}" required/>
         <!--end::Input-->
     </div>
 </div>
@@ -166,7 +166,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->docket_date}}" required/>
+        <input type="date" id="docket_date" name="docket_date" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="{{$sender->docket_date}}" required/>
         <!--end::Input-->
     </div>
 </div>
@@ -185,23 +185,23 @@
 <div class="row">
 <div class="col">
 <label for="" class="form-label">Add Catagories</label>
-        <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);"> 
+        <select class="form-select form-select-solid" id="catagories" name="catagories" data-control="select2" data-placeholder="~~Select~~" onchange="depCheck(this);" style="background-color: white; border: 1px solid #aea7a7;"> 
 		<option value="{{$sender->catagories}}" selected >{{$sender->catagories}}</option>
         @foreach($categorys as $category)
         
             <option value="{{$category->catagories}}">{{$category->catagories}}</option>
 		@endforeach
 		
-      <option>other</option>
+      <option>Other</option>
 
         </select><br>
         <div id="catYes" style="display: none;">
-		<input type="text" id="other_cat" name="other_cat" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+		<input type="text" id="other_cat" name="other_catagory" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="Other Details" value="{{$sender->other_catagory}}"/>
    </div><br>
    </div>
    <div class="col"> 
         <label for="" class="form-label">For</label>
-        <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" required> 
+        <select class="form-select form-select-solid" id="for" name="for" data-control="select2" data-placeholder="~~Select~~" onchange="forCheck(this);" style="background-color: white; border: 1px solid #aea7a7;" required> 
 	   	<option value="{{$sender->for}}" selected >{{$sender->for}}</option>
            @foreach($forcompany as $forcomp)
             <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
@@ -209,15 +209,15 @@
       <option>other</option>
         </select><br>
 		<br>
-		<div id="forYes" style="display: none;">
+	<!--	<div id="forYes" style="display: none;">
 		<input type="text" id="for_other" name="for_other" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
- </div><br>
+     </div><br> -->
 
- </div>
-</div>
+     </div>
+     </div>
 
-<div class="row">
-<div class="col">
+   <div class="row">
+   <div class="col">
 
 	 <!--begin::Input group-->
 	 <div class="fv-row mb-10 col-md-12" id="catBill" style="display: none;">
@@ -226,7 +226,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="bill" name="bill" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->bill}}" />
+        <input type="text" id="bill" name="bill" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="{{$sender->bill}}" />
         <!--end::Input-->
     </div>
 </div>
@@ -237,7 +237,7 @@
         <label class="fw-bold fs-6 mb-2">Amount</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="amount" name="amount" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->amount}}" style="width:119%;"/>
+        <input type="text" id="amount" name="amount" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->amount}}" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/>
         <!--end::Input-->
     </div>
 </div>
@@ -250,7 +250,7 @@
         <label class="fw-bold fs-6 mb-2">From</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="from" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->from}}" />
+        <input type="text" id="from" name="from" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="{{$sender->from}}" />
         <!--end::Input-->
    
 </div>
@@ -261,7 +261,7 @@
         <label class="fw-bold fs-6 mb-2">Month</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" id="month" name="month" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->month}}" style="width:119%;"/>
+        <input type="text" id="month" name="month" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->month}}" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/>
         <!--end::Input-->
     </div>
 </div>
@@ -273,7 +273,7 @@
        <label class="fw-bold-gray fs-6 mb-2">Financial document</label>
        <!--end::Label-->
        <!--begin::Input-->
-       <input type="text" id="financial" name="financial" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->financial}}" style="width:119%;"/>
+       <input type="text" id="financial" name="financial" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->financial}}" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/>
        <!--end::Input-->
    </div>
     </div>
@@ -282,7 +282,7 @@
           <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label>
           <!--end::Label-->
            <!--begin::Input-->
-           <input type="text" id="kyc" name="kyc" class="form-control form-control-solid mb-3 mb-lg-0"      placeholder="" value="{{$sender->kyc}}" />
+           <input type="text" id="kyc" name="kyc" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;"    placeholder="" value="{{$sender->kyc}}" />
            <!--end::Input-->
              </div>
    </div>
@@ -296,7 +296,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="given_to" name="given_to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->given_to}}" />
+        <input type="text" id="given_to" name="given_to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->given_to}}" style="background-color: white; border: 1px solid #aea7a7;"/>
         <!--end::Input-->
      </div>
      </div>
@@ -307,7 +307,7 @@
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="checked_by" name="checked_by" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->checked_by}}" />
+        <input type="text" id="checked_by" name="checked_by" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{$sender->checked_by}}" style="background-color: white; border: 1px solid #aea7a7;"/>
         <!--end::Input-->
      </div>
      </div>

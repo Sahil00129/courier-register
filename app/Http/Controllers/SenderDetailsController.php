@@ -49,7 +49,6 @@ class SenderDetailsController extends Controller
     {
         if ($request->ajax()) {
            $data = Sender::orderby('name')->select('location','name','type','telephone_no')->where('name', 'like', '%' .$request->search . '%')->orWhere('location', 'like', '%' .$request->search . '%')->get();
-
            // $data = Sender::where('name','LIKE',$request->search.'%')->orWhere('location','LIKE',$request->search.'%')->get();
            // echo'<pre>'; print_r($data); die;
             $output = '';
@@ -116,27 +115,30 @@ class SenderDetailsController extends Controller
        }
 
 
-       foreach($_POST['catagories'] as $key => $value){
-        //$sender = new CourierSender;
+       foreach($request->catagories as $key => $value){
+      
             $sender = ([
+            
                   'name_company' => $name_company,
                   'location' => $location,
-                  'docket_no' => $docket_no,
+                    'docket_no' => $docket_no,
                   'docket_date' => $docket_date,
                   'telephone_no' => $telephone_no,
                   'courier_name' => $courier_name,
-                  'catagories' => $value,
-                  'for' => $_POST['for'][$key],
-                  'bill' => $_POST['bill'][$key],
-                  'amount' => $_POST['amount'][$key],
-                  'from' => $_POST['from'][$key],
-                  'month' => $_POST['month'][$key],
-                  'financial' => $_POST['financial'][$key],
-                  'kyc' => $_POST['kyc'][$key],
-                 
+                    'catagories' => $value,
+                    'for' => $request->for[$key],
+                   'bill' => $request->bill[$key],
+                  'amount' => $request->amount[$key],
+                   'from' => $request->from[$key],
+                   'month' => $request->month[$key],
+                    'financial' => $request->financial[$key],
+                    'kyc' => $request->kyc[$key],
+                    'other_catagory' => $request->other_catagory[$key],
 
             ]);
-          //echo'<pre>'; print_r($sender); die;
+           // echo'<pre>'; print_r($sender); die;
+           // $sender->save();
+         //echo'<pre>'; print_r($sender); die;
            DB::table('new_courier_sender')->insert($sender);
 
        }
@@ -195,13 +197,13 @@ class SenderDetailsController extends Controller
       $senders->month = $request->month;
       $senders->financial = $request->financial;
       $senders->kyc = $request->kyc;
+      $senders->other_catagory = $request->other_catagory;
       $senders->given_to = $request->given_to;
       $senders->checked_by = $request->checked_by;
 
       Session::flash('update', 'Data has been updated successfully');
       $senders->update();
       return redirect('courier-list');
-
 
     }
 }

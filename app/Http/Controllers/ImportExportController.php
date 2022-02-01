@@ -183,7 +183,7 @@ class ImportExportController extends Controller
 
                 $items['stock_trf'][] =  DB::table('stock_transfer')->where('item_name', $item->item_name)->where('site_id', $site_id)->whereBetween('bill_date',[$_POST['fromDate'],$_POST['toDate']])->get();   
                          
-            }
+             }
             $array = json_decode(json_encode($items), true);
             $saleData = $array['sale'];
             $purchaseData = $array['purchase'];
@@ -199,7 +199,7 @@ class ImportExportController extends Controller
 
                     $doc_type= $res[$i][$j]['document_type'];
                     
-               }
+                 }
                echo "<br>";
             }
             $pdf = PDF::loadHtml('myPDF');
@@ -207,7 +207,7 @@ class ImportExportController extends Controller
            // $pdf->save('pdf/'.$site_id.'.pdf');
             return $pdf->download('pdf/'.$site_id.'.pdf');
 
-        }catch (\Exception $e) {
+         }catch (\Exception $e) {
             $bug = $e->getMessage();
             $response['success'] = false;
             $response['messages'] = $bug;

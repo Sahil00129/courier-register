@@ -29,6 +29,7 @@ class CreateNewCourierSenderTable extends Migration
             $table->string('for')->nullable();
             $table->string('financial')->nullable();
             $table->string('catagories')->nullable();
+            $table->string('other_catagory')->nullable();
             $table->string('given_to')->nullable();
             $table->string('checked_by')->nullable();
             $table->timestamps();

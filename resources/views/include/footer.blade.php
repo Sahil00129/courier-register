@@ -134,6 +134,12 @@ function depCheck(that) {
         document.getElementById("catfrom").style.display = "none";
         document.getElementById("catmonth").style.display = "none";
     }
+
+    if(that.value == "Other"){
+        document.getElementById("catYes").style.display = "block";
+    }else{
+        document.getElementById("catYes").style.display = "none";
+    }
 }
 //
 //////new section/////
@@ -178,6 +184,11 @@ function depCheck(that) {
         document.getElementById("newFrom").style.display = "none";
         document.getElementById("newMonth").style.display = "none";
     }
+    if(that.value == "Other"){
+        document.getElementById("rowYes").style.display = "block";
+    }else{
+        document.getElementById("rowYes").style.display = "none";
+    }
 }
 
 
@@ -189,7 +200,10 @@ function forCheck(that) {
         document.getElementById("forYes").style.display = "none";
     }
 }
-///
+////////////////////////////
+
+///////////////////////////
+
 			//alert('h'); die;
 			$('#newSender').submit(function(e) {
 		    e.preventDefault();

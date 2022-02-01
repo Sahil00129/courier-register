@@ -245,3 +245,17 @@ class SenderDetailsController extends Controller
 
     }
 }
+            //    'name_company' => $name_company,
+              //    'location' => $location,
+             //     'docket_no' => $docket_no,
+             //     'docket_date' => $docket_date,
+             //     'telephone_no' => $telephone_no,
+             //     'courier_name' => $courier_name,
+             //     'catagories' => $value,
+            //      'for' => $_POST['for'][$key],
+             //     'bill' => $_POST['bill'][$key],
+             //     'amount' => $_POST['amount'][$key],
+             //     'from' => $_POST['from'][$key],
+             //     'month' => $_POST['month'][$key],
+             //     'financial' => $_POST['financial'][$key],
+             //     'kyc' => $_POST['kyc'][$key], 
