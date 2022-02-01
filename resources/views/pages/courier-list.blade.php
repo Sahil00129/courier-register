@@ -170,8 +170,8 @@ overflow-y:scroll;
                                // $kyc = $cmpny['kyc'];
                                $document =$cmpny['bill'].' '.$cmpny['amount'].' '.$cmpny['from'].' '.$cmpny['month'].' '.$cmpny['financial'].' '.$cmpny['kyc'].' '.$cmpny['other_catagory'];
                               // print_r($document); die;
-             		    	?>
-             			<tr>
+             		     	?>
+             	    	<tr>
 							<td>{{$strip}}</td>
 							<td>{{$cmpny->docket_no}}</td>
 							<td>{{$newDate}}</td>
@@ -191,7 +191,7 @@ overflow-y:scroll;
 						</tbody>
                         <tfoot>
                              <tr>
-                             <th class="min-w-125px">Date of Receipt</th>
+                                <th class="min-w-125px">Date of Receipt</th>
 								<th class="min-w-125px">Docket No</th>
 								<th class="min-w-125px">Docket Date</th>
                                 <th class="min-w-125px">Name</th>
@@ -204,10 +204,10 @@ overflow-y:scroll;
                                 <th class="min-w-125px">Checked By</th>
                                 <th class="min-w-125px">Given To</th>
 								<th class="min-w-125px">Action</th>
-                            </tr>
-                       </tfoot>
+                              </tr>
+                          </tfoot>
 						<!--end::Table body-->
-					</table>
+				    	</table>
                 <div id="bottom">Paging</div>
                </div>
 					<!--end::Table-->
@@ -265,7 +265,7 @@ $(document).ready(function () {
                     $(
                         'input',
                         $('.filters th').eq($(api.column(colIdx).header()).index())
-                    )
+                      )
                         .off('keyup change')
                         .on('keyup change', function (e) {
                             e.stopPropagation();
@@ -286,7 +286,7 @@ $(document).ready(function () {
                                     this.value == ''
                                 )
                                 .draw();
- 
+                                
                             $(this)
                                 .focus()[0]
                                 .setSelectionRange(cursorPosition, cursorPosition);
@@ -296,9 +296,5 @@ $(document).ready(function () {
     });
 	
 });
-
-
 </script>
-
-
 @endsection

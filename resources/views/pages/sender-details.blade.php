@@ -190,17 +190,15 @@ th {
         <!--begin::Input-->
         <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" required/>
         <!--end::Input-->
+           </div>
+       </div>
     </div>
-     </div>
-    </div>
-	<button type="submit" class="btn btn-danger"><span class="indicator-label">Save</span>
+	       <button type="submit" class="btn btn-danger"><span class="indicator-label">Save</span>
 		<span class="indicator-progress">Please wait...
 		<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span></button>                 
      </form>      
 
-
-						<!--end::Table body-->
-					
+				<!--end::Table body-->	
 					<!--end::Table-->
 				</div>
 				<!--end::Card body-->

@@ -227,7 +227,6 @@
     </div>
    </div>
 
-  
    </div>
     <div class="row">
     <div class="fv-row mb-10 col-md-6" id="catfrom" style="display: none;">
@@ -298,8 +297,8 @@
 	                  	<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 	              	</button>
               </div>
-         </form>		
-    </div>
+           </form>		
+       </div>
     <!--end::Card body-->
 			</div>
 			<!--end::Card-->
@@ -322,8 +321,7 @@
     $(document).on('click','#remove', function(){ 
       $(this).closest('.insertRowAfter1').remove();
     });
-
-    
+  
     </script>
 
 @endsection

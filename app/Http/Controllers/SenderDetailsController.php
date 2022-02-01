@@ -116,29 +116,28 @@ class SenderDetailsController extends Controller
 
 
        foreach($request->catagories as $key => $value){
-      
-            $sender = ([
             
+            $sender = ([
                   'name_company' => $name_company,
                   'location' => $location,
-                    'docket_no' => $docket_no,
+                  'docket_no' => $docket_no,
                   'docket_date' => $docket_date,
                   'telephone_no' => $telephone_no,
                   'courier_name' => $courier_name,
-                    'catagories' => $value,
-                    'for' => $request->for[$key],
-                   'bill' => $request->bill[$key],
+                  'catagories' => $value,
+                  'for' => $request->for[$key],
+                  'bill' => $request->bill[$key],
                   'amount' => $request->amount[$key],
-                   'from' => $request->from[$key],
-                   'month' => $request->month[$key],
-                    'financial' => $request->financial[$key],
-                    'kyc' => $request->kyc[$key],
-                    'other_catagory' => $request->other_catagory[$key],
+                  'from' => $request->from[$key],
+                  'month' => $request->month[$key],
+                  'financial' => $request->financial[$key],
+                  'kyc' => $request->kyc[$key],
+                  'other_catagory' => $request->other_catagory[$key],
 
             ]);
-           // echo'<pre>'; print_r($sender); die;
+            // echo'<pre>'; print_r($sender); die;
            // $sender->save();
-         //echo'<pre>'; print_r($sender); die;
+          //echo'<pre>'; print_r($sender); die;
            DB::table('new_courier_sender')->insert($sender);
 
        }
@@ -187,10 +186,8 @@ class SenderDetailsController extends Controller
       //$months = $request->docket_date;
       //$chg = date('F Y', strtotime($months));
       $senders->courier_name = $request->slct;
-      $senders->docket_date = $request->docket_date;
-      $senders->docket_no = $request->docket_no;
-      $senders->docket_date = $request->docket_date;
       $senders->for = $request->for;
+      $senders->catagories = $request->catagories;
       $senders->bill = $request->bill;
       $senders->amount = $request->amount;
       $senders->from = $request->from;

@@ -81,8 +81,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>   
         <script src="{{ asset('src/js/vendor/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}"></script>
         <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
