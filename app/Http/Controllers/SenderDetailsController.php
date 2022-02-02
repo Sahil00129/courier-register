@@ -148,7 +148,6 @@ class SenderDetailsController extends Controller
            DB::table('new_courier_sender')->insert($sender);
 
        }
-
         $response['success'] = true;
         $response['messages'] = 'Succesfully Submitted';
         return Response::json($response); 

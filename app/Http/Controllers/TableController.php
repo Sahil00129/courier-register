@@ -53,7 +53,7 @@ class TableController extends Controller
         $dept_id = $request->dept_id;
         $add = Department::find($dept_id);
         $add->department = $request->department;
-
+        Session::flash('update', 'Data has been updated successfully');
          $add->update();
 
          return redirect()->back();
@@ -74,6 +74,7 @@ class TableController extends Controller
        $cat_id = $request->cat_id;
        $addnew = Category::find($cat_id);
        $addnew->catagories = $request->catagories;
+       Session::flash('update', 'Data has been updated successfully');
         $addnew->update();
      
         return redirect()->back();
@@ -95,6 +96,7 @@ class TableController extends Controller
        $for_id = $request->for_id;
        $addfor = ForCompany::find($for_id);
        $addfor->for_company = $request->for_company;
+       Session::flash('update', 'Data has been updated successfully');
        $addfor->update();
       return redirect()->back();
 
@@ -114,6 +116,7 @@ class TableController extends Controller
       $courier_id = $request->courier_id;
       $addcourier = CourierCompany::find($courier_id);
       $addcourier->courier_name = $request->courier_name;
+      Session::flash('update', 'Data has been updated successfully');
       $addcourier->update();
      return redirect()->back();
 
