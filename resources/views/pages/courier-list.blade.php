@@ -135,7 +135,7 @@ overflow-y:scroll;
 						<thead>
 							<!--begin::Table row-->
 							<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-							<th class="min-w-125px">Date of Receipt</th>
+							    <th class="min-w-125px">Date of Receipt</th>
 								<th class="min-w-125px">Docket No</th>
 								<th class="min-w-125px">Docket Date</th>
                                 <th class="min-w-125px">Name</th>
@@ -186,8 +186,8 @@ overflow-y:scroll;
                             <td>{{$cmpny->given_to}}</td>
 							<td><a href="delete/{{$cmpny->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 							<a href="{{ url('edit/'.$cmpny->id) }}" class="btn btn-warning edit"><i class='fas fa-edit' style='font-size:24px; width:42%;'></i></a></td>
-                           </tr>
-                         @endforeach
+                            </tr>
+                            @endforeach
 						</tbody>
                         <tfoot>
                              <tr>
@@ -220,14 +220,10 @@ overflow-y:scroll;
 	</div>
 	<!--end::Post-->
 </div>
-
-
-
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
 <script>
-
 
 $(document).ready(function () {
     
@@ -286,7 +282,7 @@ $(document).ready(function () {
                                     this.value == ''
                                 )
                                 .draw();
-                                
+
                             $(this)
                                 .focus()[0]
                                 .setSelectionRange(cursorPosition, cursorPosition);

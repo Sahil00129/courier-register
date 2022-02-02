@@ -8,7 +8,7 @@
 }
 div#ignoredItems {
     font-size: 13px;
-    border: 1px solid;
+    border: 1px solid; 
     padding: 17px;
 }
 </style>   
@@ -161,7 +161,6 @@ div#ignoredItems {
 						</div>
 						<!--end::Post-->
 					</div>
-
 @endsection
 
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>

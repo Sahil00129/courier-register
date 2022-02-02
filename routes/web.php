@@ -50,8 +50,6 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/dashboard', [HomeController::class,'dash']);
 	
 
-
-
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){
 	Route::get('/users', [UserController::class,'index']);
@@ -93,7 +91,6 @@ Route::group(['middleware' => 'auth'], function(){
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
 
-
 });
 
 /*Excel import export*/
@@ -126,10 +123,10 @@ Route::get('edit/{id}', [SenderDetailsController::class, 'edit']);
 
 Route::any('edit/update-data/{id}', [SenderDetailsController::class, 'update']);
 
-////
+////////////
 Route::get('edit-department/{id}', [TableController::class, 'editDept']);
 Route::put('updated-department', [TableController::class, 'updateDepartment']);
-///
+////////////
 Route::get('edit-catagories/{id}', [TableController::class, 'editCat']);
 Route::put('update-catagories', [TableController::class, 'updateCatagories']);
 ////

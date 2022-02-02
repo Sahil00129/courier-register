@@ -29,7 +29,6 @@
 						<!--begin::Table body-->
                        
 						<tbody class="fw-bold text-gray-600">
-
                         @foreach ($forcompanys as $forcompany)
 							<tr>
                             <td>{{$forcompany->for_company}}</td>
@@ -88,13 +87,10 @@
                                                <!--begin::Input-->
                                                 <input type="text" id="for_company" name="for_company" class="form-control" style="width:95%;" placeholder="" value="" />
                                                <!--end::Input-->
-                                                   </div>
-														
-														
+                                                   </div>			
 														<button type="submit"  class="btn btn-primary">
 															Update
-														</button>
-														
+														</button>	
                                                     </form>
 
 											<!--end::Form-->
@@ -106,9 +102,7 @@
 									<!--end::Modal dialog-->
 								</div>
 								<!--end::Modal - New Card-->
-   
-
-  
+								
 	<script>
 	$(document).ready(function(){
 		//alert('h'); die;

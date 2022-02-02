@@ -201,7 +201,13 @@ function forCheck(that) {
     }
 }
 ////////////////////////////
-
+function cforCheck(that) {
+    if (that.value == "other") {
+        document.getElementById("cYes").style.display = "block";
+    } else {
+        document.getElementById("cYes").style.display = "none";
+    }
+}
 ///////////////////////////
 
 			//alert('h'); die;

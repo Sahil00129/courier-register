@@ -43,8 +43,6 @@
 																		</a>
 																	</div>
 												
-													
-													
 																	<div class="menu-item">
 																		<a class="menu-link py-3" href="{{ url('list-data') }}">
 																			<span class="menu-bullet">
@@ -71,9 +69,7 @@
 																			<span class="menu-title">Add New</span>
 																		</a>
 																	</div>
-												
-													
-													
+																
 																	<div class="menu-item">
 																		<a class="menu-link py-3" href="{{ url('courier-list') }}">
 																			<span class="menu-bullet">
@@ -81,7 +77,7 @@
 																			</span>
 																			<span class="menu-title">Courier List</span>
 																		</a>
-																	</div>
+													</div>
 												</div>
 											</div> -->
 
@@ -125,8 +121,6 @@
 								</div>
 							</div>
 							<!--end::Search toggle-->
-
-						
 						</div>
 						<!--end::Search-->
 					</div>

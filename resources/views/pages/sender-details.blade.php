@@ -218,8 +218,6 @@ th {
 			$('#sender').submit(function(e) {
 		    e.preventDefault();
 			//alert (this); die;
-       
-  
 				$.ajax({
 					  url: "/save-sender", 
 					  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -239,17 +237,13 @@ th {
                         //console.log(data.ignoredItems); 
                         //console.log(data.ignoredcount);
                         if(data.success === true) { 
-                          
-                           
                             swal("Success!", "Data has been Submitted successfully", "success");
                             
                           }
-                        
-                        else{
+                            else{
                         swal("Error!", data.messages, "error");
                         
                         }
-                    
                         }
                         
 				}); 

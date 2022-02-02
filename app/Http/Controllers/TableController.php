@@ -21,8 +21,10 @@ class TableController extends Controller
 
     public function categoryTable()
     {
+
       $catagories = Category::all();
       return view('pages.catagories', ['catagories' => $catagories]);
+      
     }
  
     public function courierCompanies()

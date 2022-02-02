@@ -124,9 +124,9 @@
         <!--begin::Input-->
         <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" />
         <!--end::Input-->
-    </div>
-   </div>
-   </div>
+       </div>
+      </div>
+ </div>
 
     <h3><b>Courier Details</b></h3>
 	       <div class="row">
@@ -150,7 +150,7 @@
                      <label class="fw-bold-gray fs-6 mb-2 editlable">Docket No.</label>
                    <!--end::Label-->
                   <!--begin::Input-->
-                    <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" required/>
+                    <input type="text" id="docket_no" name="docket_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" autocomplete="off" required/>
                   <!--end::Input-->
                   </div>
                </div>
@@ -196,9 +196,9 @@
         </select><br>
         
 		<br>
-    <!--	<div id="forYes" style="display: none;">
-		<input type="text" id="cfor" name="cfor" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
-        </div><br> -->
+  	<div id="forYes" style="display: none;">
+		<input type="text" id="cfor" name="cfor[]" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+        </div><br>  
 
         </div>
         </div>
@@ -256,8 +256,8 @@
         <!--begin::Input-->
         <input type="text" id="other_detail" name="other_detail[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
         <!--end::Input-->
+       </div>
     </div>
-  </div>
    <div class="row">
     
     <!--begin::Input group-->
@@ -305,23 +305,21 @@
 		</div>
 		<!--end::Container-->
 	</div>
-
 	<!--end::Post-->
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script>
-                   
+     <script>            
     $(document).ready(function(){
-      
     $('.addrow').on('click', function(){
-    var appendData ='<div class="insertRowAfter1"> <h3> <b>Document Details</b> </h3> <div class="row"> <div class="col"> <label for="" class="form-label editlable">Add Catagories</label> <select class="form-select form-select-solid" id="catagories" name="catagories[]" data-control="select2" data-placeholder="~~Select~~" onchange="rowCheck(this);" style="background-color: white; border: 1px solid #aea7a7;"> <option disabled selected>select..</option>@foreach($categorys as $category) <option value="{{$category->catagories}}">{{$category->catagories}}</option>@endforeach <option>Other</option> </select> <br><div id="rowYes" style="display: none;"> <input type="text" id="other_cat" name="other_catagory[]" class="form-control form-control-solid mb-3 mb-lg-0"  placeholder="other" value="" style="background-color: white; border: 1px solid #aea7a7;"/></div><br></div><div class="col"> <label for="" class="form-label editlable">For</label> <select class="form-select form-select-solid" id="for" name="for[]" data-control="select2" data-placeholder="~~Select~~" onchange="" style="background-color: white; border: 1px solid #aea7a7;" required> <option disabled selected>select..</option> @foreach($forcompany as $forcomp) <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>@endforeach <option>other</option> </select> <br><br></div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-12" id="newbill" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label> <input type="text" id="bill" name="bill[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="col"> <div class="fv-row mb-10 col-md-10" id="newAmt" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label> <input type="text" id="amount" name="amount[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="newFrom" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">From</label> <input type="text" id="from" name="from[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="newMonth" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">Month</label> <input type="text" id="month" name="month[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="catother" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Other</label> <input type="text" id="other_detail" name="other_detail[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="nfinancial" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">financial document</label> <input type="text" id="financial" name="financial[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="nkyc" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label> <input type="text" id="kyc" name="kyc[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div> <button type="button" class="btn btn-primary" style="border-radius: 30%;"id="remove"><i class="fa fa-trash"></button></div>';            
+    var appendData ='<div class="insertRowAfter1"> <h3> <b>Document Details</b> </h3> <div class="row"> <div class="col"> <label for="" class="form-label editlable">Add Catagories</label> <select class="form-select form-select-solid" id="catagories" name="catagories[]" data-control="select2" data-placeholder="~~Select~~" onchange="rowCheck(this);" style="background-color: white; border: 1px solid #aea7a7;"> <option disabled selected>select..</option>@foreach($categorys as $category) <option value="{{$category->catagories}}">{{$category->catagories}}</option>@endforeach <option>Other</option> </select> <br><div id="rowYes" style="display: none;"> <input type="text" id="other_cat" name="other_catagory[]" class="form-control form-control-solid mb-3 mb-lg-0"  placeholder="Other Details" value="" style="background-color: white; border: 1px solid #aea7a7;"/></div><br></div><div class="col"> <label for="" class="form-label editlable">For</label> <select class="form-select form-select-solid" id="for" name="for[]" data-control="select2" data-placeholder="~~Select~~" onchange="cforCheck(this);" style="background-color: white; border: 1px solid #aea7a7;" required> <option disabled selected>select..</option> @foreach($forcompany as $forcomp) <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>@endforeach <option>other</option> </select> <br><br> <div id="cYes" style="display: none;">	<input type="text" id="cfor" name="cfor[]" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>  </div><br>  </div></div> <div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-12" id="newbill" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label> <input type="text" id="bill" name="bill[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="col"> <div class="fv-row mb-10 col-md-10" id="newAmt" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label> <input type="text" id="amount" name="amount[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="newFrom" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">From</label> <input type="text" id="from" name="from[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="newMonth" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">Month</label> <input type="text" id="month" name="month[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="catother" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Other</label> <input type="text" id="other_detail" name="other_detail[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="nfinancial" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">financial document</label> <input type="text" id="financial" name="financial[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="nkyc" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label> <input type="text" id="kyc" name="kyc[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div> <button type="button" class="btn btn-primary" style="border-radius: 30%;"id="remove"><i class="fa fa-trash"></button></div>'; 
+                 
     $(appendData).insertAfter('.insertRowAfter'); 
-        });
+      });
     });
+    
     $(document).on('click','#remove', function(){ 
       $(this).closest('.insertRowAfter1').remove();
     });
-  
     </script>
 
 @endsection

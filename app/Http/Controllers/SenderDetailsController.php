@@ -97,7 +97,7 @@ class SenderDetailsController extends Controller
 ////////////////////////////////////////////////////////////////////////////////////////////////
     public function newCreate(Request $request)
     {
-      // echo"<pre>"; print_r($_POST); die;
+    // echo"<pre>"; print_r($_POST); die;
 
        $name_company = $request->name_company; 
        $location = $request->location;
@@ -114,9 +114,16 @@ class SenderDetailsController extends Controller
         $courier_name = $request->slct;
        }
 
-
        foreach($request->catagories as $key => $value){
-            
+         if($request->for[$key] == 'other'){
+          $c = $request->cfor[$key];
+          $cfor = new ForCompany;
+          $cfor->for_company = $request->cfor[$key];
+          $cfor->save();
+           }else{
+          $c = $request->for[$key];
+       } 
+      // echo'<pre>'; print_r($c); die;
             $sender = ([
                   'name_company' => $name_company,
                   'location' => $location,
@@ -125,7 +132,7 @@ class SenderDetailsController extends Controller
                   'telephone_no' => $telephone_no,
                   'courier_name' => $courier_name,
                   'catagories' => $value,
-                  'for' => $request->for[$key],
+                  'for' => $c,
                   'bill' => $request->bill[$key],
                   'amount' => $request->amount[$key],
                   'from' => $request->from[$key],
@@ -135,23 +142,16 @@ class SenderDetailsController extends Controller
                   'other_catagory' => $request->other_catagory[$key],
 
             ]);
-            // echo'<pre>'; print_r($sender); die;
+         // echo'<pre>'; print_r($sender); die;
            // $sender->save();
-          //echo'<pre>'; print_r($sender); die;
+         //echo'<pre>'; print_r($sender); die;
            DB::table('new_courier_sender')->insert($sender);
 
        }
 
         $response['success'] = true;
         $response['messages'] = 'Succesfully Submitted';
-        return Response::json($response);
-        //'bill' => $_POST['bill'][$key],
-        //'amount' => $_POST['amount'][$key],
-        //'from' => $_POST['from'][$key],
-        //'month' => $_POST['month'][$key],
-        //'financial' => $_POST['financial'][$key],
-        //'kyc' => $_POST['kyc'][$key],
-        
+        return Response::json($response); 
     }
 
     public function destroy($cmpny_id)
@@ -203,4 +203,5 @@ class SenderDetailsController extends Controller
       return redirect('courier-list');
 
     }
+
 }
