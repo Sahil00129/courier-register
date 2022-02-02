@@ -76,7 +76,7 @@ class TableController extends Controller
        $addnew->catagories = $request->catagories;
        Session::flash('update', 'Data has been updated successfully');
         $addnew->update();
-     
+    
         return redirect()->back();
 
      }

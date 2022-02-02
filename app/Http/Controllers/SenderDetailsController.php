@@ -26,7 +26,7 @@ class SenderDetailsController extends Controller
         $sender->telephone_no = $request->telephone_no;
 
 
-        $S = DB::table('sender_details')
+         $S = DB::table('sender_details')
         ->where('name', '=', $request['name'])
         ->where('telephone_no', '=', $request['telephone_no'])
         ->first();
@@ -115,13 +115,13 @@ class SenderDetailsController extends Controller
        }
 
        foreach($request->catagories as $key => $value){
-         if($request->for[$key] == 'other'){
-          $c = $request->cfor[$key];
-          $cfor = new ForCompany;
-          $cfor->for_company = $request->cfor[$key];
-          $cfor->save();
-           }else{
-          $c = $request->for[$key];
+             if($request->for[$key] == 'other'){
+             $c = $request->cfor[$key];
+             $cfor = new ForCompany;
+             $cfor->for_company = $request->cfor[$key];
+             $cfor->save();
+             }else{
+             $c = $request->for[$key];
        } 
       // echo'<pre>'; print_r($c); die;
             $sender = ([
@@ -141,17 +141,17 @@ class SenderDetailsController extends Controller
                   'kyc' => $request->kyc[$key],
                   'other_catagory' => $request->other_catagory[$key],
 
-            ]);
-         // echo'<pre>'; print_r($sender); die;
-           // $sender->save();
-         //echo'<pre>'; print_r($sender); die;
-           DB::table('new_courier_sender')->insert($sender);
+              ]);
+                // echo'<pre>'; print_r($sender); die;
+                // $sender->save();
+                //echo'<pre>'; print_r($sender); die;
+                DB::table('new_courier_sender')->insert($sender);
 
-       }
-        $response['success'] = true;
-        $response['messages'] = 'Succesfully Submitted';
-        return Response::json($response); 
-    }
+            }
+             $response['success'] = true;
+             $response['messages'] = 'Succesfully Submitted';
+             return Response::json($response); 
+    }     
 
     public function destroy($cmpny_id)
     {

@@ -31,7 +31,7 @@
         <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
-        
+   
 
         <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js')}}"></script>
 	<!--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">   -->
@@ -69,8 +69,8 @@
                 $('#product_list').html("");
                 }
             });
-  /*  $("#search").autocomplete({
-        source: function( request, response ) {
+    /*$("#search").autocomplete({
+          source: function( request, response ) {
           // Fetch data
           $.ajax({
             url:"{{ url('autocomplete-search') }}",
@@ -150,8 +150,6 @@ function depCheck(that) {
 //}
 ///
 
-
-
 ///////////////////////////////////////////////////////////
   function rowCheck(that) {
       if (that.value == "Agreement") {
@@ -189,7 +187,7 @@ function depCheck(that) {
     }else{
         document.getElementById("rowYes").style.display = "none";
     }
-}
+ }
 
 
 ////////////////////////////////////////////////////////////
@@ -199,26 +197,26 @@ function forCheck(that) {
     } else {
         document.getElementById("forYes").style.display = "none";
     }
-}
-////////////////////////////
-function cforCheck(that) {
+  }
+  ////////////////////////////
+  function cforCheck(that) {
     if (that.value == "other") {
         document.getElementById("cYes").style.display = "block";
     } else {
         document.getElementById("cYes").style.display = "none";
     }
-}
-///////////////////////////
+  } 
+  ///////////////////////////
 
-			//alert('h'); die;
-			$('#newSender').submit(function(e) {
-		    e.preventDefault();
+		//alert('h'); die;
+		$('#newSender').submit(function(e) {
+	    e.preventDefault();
         var slct = jQuery('#slct').val();
         if (!slct) {
         swal("Error!", "Please select courier name", "error");
         return false;
        }
-			//alert (this); die;
+			  //alert (this); die;
 				$.ajax({
 					  url: "/save-newSender", 
 					  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -250,19 +248,19 @@ function cforCheck(that) {
                         }
 				}); 
 			});	
- </script>
-    @if(Session::has('deleted'))
-<script>
-	swal("Deleted", "Data has been Deleted","success");
-</script>
-	@endif
-
-
   </script>
+     @if(Session::has('deleted'))
+  <script>
+	 swal("Deleted", "Data has been Deleted","success");
+  </script>
+	 @endif
+ 
+
+    </script>
     @if(Session::has('update'))
-<script>
-	swal("Updated", "Data has been successfully updated","success");
-</script>
-	@endif
+    <script>
+  	swal("Updated", "Data has been successfully updated","success");
+    </script>
+  	@endif
 
     

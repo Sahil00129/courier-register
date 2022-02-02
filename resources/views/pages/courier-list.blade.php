@@ -113,8 +113,7 @@ overflow-y:scroll;
 			<!--begin::Actions-->
 			<div class="d-flex align-items-center py-1">
 				<!--begin::Wrapper-->
-				 
-
+	
 			</div>
 			<!--end::Actions-->
 		</div>

@@ -109,24 +109,24 @@
         <div id="product_list"></div>
        </div>
    </div>
-   <div class="col">
+    <div class="col">
        <label for="" class="form-label editlable">Location</label>
-    <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%; background-color: white; border: 1px solid #aea7a7;" rows="1" cols="1"></textarea>
+        <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%; background-color: white; border: 1px solid #aea7a7;" rows="1" cols="1" disabled></textarea>
    </div>
 
     
     <div class="col">
-	 <div class="fv-row mb-10 col-md-16">
+	  <div class="fv-row mb-10 col-md-16">
         <!--begin::Label-->
         <label class="fw-bold-gray fs-6 mb-2 editlable">Telephone No</label>
         <!--end::Label-->
 
         <!--begin::Input-->
-        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" />
+        <input type="text" id="telephone_no" name="telephone_no" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value="" autocomplete="off"/>
         <!--end::Input-->
-       </div>
-      </div>
- </div>
+             </div>
+         </div>
+   </div>
 
     <h3><b>Courier Details</b></h3>
 	       <div class="row">
@@ -141,7 +141,7 @@
                 </select><br>
 	        	<br>
 		<div id="ifYes" style="display: none;">
-		<input type="text" id="other" name="other_courier" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
+		  <input type="text" id="other" name="other_courier" class="form-control form-control-solid mb-3 mb-lg-0"   style="width:45%;" placeholder="other" value=""/>
         </div><br>
        </div>
               <div class="col">
@@ -166,7 +166,7 @@
               </div>
            </div>
         </div>
-          <div class="insertRowAfter">
+          <div class="insertRowAfter" style="border-bottom: 3px solid #f76d61; margin-bottom: 10px;">
             <h3><b>Document Details</b></h3>
                <div id="output"></div>
                     <div id="appendRow" enctype="multipart/form-data">
@@ -193,9 +193,9 @@
             <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>
 	     	@endforeach
             <option>other</option>
-        </select><br>
-        
-		<br>
+        </select>
+        <br>
+		
   	<div id="forYes" style="display: none;">
 		<input type="text" id="cfor" name="cfor[]" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>
         </div><br>  
@@ -268,10 +268,9 @@
          <!--end::Label-->
          <!--begin::Input-->
          <input type="text" id="financial" name="financial[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/>
-       <!--end::Input-->
-         </div>
-    </div>
-              
+         <!--end::Input-->
+          </div>
+    </div>        
            <div class="fv-row mb-10 col-md-4" id="catment" style="display: none;">
           <!--begin::Label-->
           <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label>
@@ -283,23 +282,24 @@
          </div>
     </div>
   </div>
+  
        </div>
        <div class="row">
              <div class="col">
-                <button class="btn btn-warning addrow" style="float:right; border-radius: 30%;" type="button"><i class='fas fa-plus' style='font-size:24px; width:91%;'></i></button>
+                <button class="btn btn-warning btn-sm addrow" style="float:right; border-radius: 30%;" type="button"><i class='fas fa-plus' style='font-size:24px; width:91%;'></i></button>
 
               </div>
              </div>
               <!--<button type="button" id="newsectionbtn" class="btn btn-warning" style="float: right;"><span     class="glyphicon glyphicon-plus-sign"></span>Add</button>  -->
-		              <button type="submit" class="btn btn-danger" style="margin-left:75px;">
+		                <button type="submit" class="btn btn-danger" style="margin-left:75px;">
                       <span class="indicator-label">Submit</span>
 		                  <span class="indicator-progress">Please wait...
-	                  	<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-	              	</button>
-              </div>
-           </form>		
-       </div>
-    <!--end::Card body-->
+	                   	<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+	                 	</button>
+                  </div>
+              </form>		
+          </div>
+       <!--end::Card body-->
 			</div>
 			<!--end::Card-->
 		</div>
@@ -311,8 +311,8 @@
      <script>            
     $(document).ready(function(){
     $('.addrow').on('click', function(){
-    var appendData ='<div class="insertRowAfter1"> <h3> <b>Document Details</b> </h3> <div class="row"> <div class="col"> <label for="" class="form-label editlable">Add Catagories</label> <select class="form-select form-select-solid" id="catagories" name="catagories[]" data-control="select2" data-placeholder="~~Select~~" onchange="rowCheck(this);" style="background-color: white; border: 1px solid #aea7a7;"> <option disabled selected>select..</option>@foreach($categorys as $category) <option value="{{$category->catagories}}">{{$category->catagories}}</option>@endforeach <option>Other</option> </select> <br><div id="rowYes" style="display: none;"> <input type="text" id="other_cat" name="other_catagory[]" class="form-control form-control-solid mb-3 mb-lg-0"  placeholder="Other Details" value="" style="background-color: white; border: 1px solid #aea7a7;"/></div><br></div><div class="col"> <label for="" class="form-label editlable">For</label> <select class="form-select form-select-solid" id="for" name="for[]" data-control="select2" data-placeholder="~~Select~~" onchange="cforCheck(this);" style="background-color: white; border: 1px solid #aea7a7;" required> <option disabled selected>select..</option> @foreach($forcompany as $forcomp) <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>@endforeach <option>other</option> </select> <br><br> <div id="cYes" style="display: none;">	<input type="text" id="cfor" name="cfor[]" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>  </div><br>  </div></div> <div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-12" id="newbill" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label> <input type="text" id="bill" name="bill[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="col"> <div class="fv-row mb-10 col-md-10" id="newAmt" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label> <input type="text" id="amount" name="amount[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="newFrom" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">From</label> <input type="text" id="from" name="from[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="newMonth" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">Month</label> <input type="text" id="month" name="month[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="catother" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Other</label> <input type="text" id="other_detail" name="other_detail[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="nfinancial" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">financial document</label> <input type="text" id="financial" name="financial[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="nkyc" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label> <input type="text" id="kyc" name="kyc[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div> <button type="button" class="btn btn-primary" style="border-radius: 30%;"id="remove"><i class="fa fa-trash"></button></div>'; 
-                 
+    var appendData ='<div class="insertRowAfter1" style="border-bottom: 3px solid #f76d61; margin-bottom:5px;"> <h3> <b>Document Details</b> </h3> <div class="row"> <div class="col"> <label for="" class="form-label editlable">Add Catagories</label> <select class="form-select form-select-solid" id="catagories" name="catagories[]" data-control="select2" data-placeholder="~~Select~~" onchange="rowCheck(this);" style="background-color: white; border: 1px solid #aea7a7;"> <option disabled selected>select..</option>@foreach($categorys as $category) <option value="{{$category->catagories}}">{{$category->catagories}}</option>@endforeach <option>Other</option> </select> <br><div id="rowYes" style="display: none;"> <input type="text" id="other_cat" name="other_catagory[]" class="form-control form-control-solid mb-3 mb-lg-0"  placeholder="Other Details" value="" style="background-color: white; border: 1px solid #aea7a7;"/></div><br></div><div class="col"> <label for="" class="form-label editlable">For</label> <select class="form-select form-select-solid" id="for" name="for[]" data-control="select2" data-placeholder="~~Select~~" onchange="cforCheck(this);" style="background-color: white; border: 1px solid #aea7a7;" required> <option disabled selected>select..</option> @foreach($forcompany as $forcomp) <option value="{{$forcomp->for_company}}">{{$forcomp->for_company}}</option>@endforeach <option>other</option> </select> <br> <div id="cYes" style="display: none;">	<input type="text" id="cfor" name="cfor[]" class="form-control form-control-solid mb-3 mb-lg-0" style="width:45%;" placeholder="other" value=""/>  </div><br>  </div></div> <div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-12" id="newbill" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Bill No</label> <input type="text" id="bill" name="bill[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="col"> <div class="fv-row mb-10 col-md-10" id="newAmt" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Amount</label> <input type="text" id="amount" name="amount[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="newFrom" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">From</label> <input type="text" id="from" name="from[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="newMonth" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">Month</label> <input type="text" id="month" name="month[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="catother" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">Other</label> <input type="text" id="other_detail" name="other_detail[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div><div class="row"> <div class="col"> <div class="fv-row mb-10 col-md-10 editlable" id="nfinancial" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2">financial document</label> <input type="text" id="financial" name="financial[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/> </div></div><div class="fv-row mb-10 col-md-4" id="nkyc" style="display: none;"> <label class="fw-bold-gray fs-6 mb-2 editlable">kyc</label> <input type="text" id="kyc" name="kyc[]" class="form-control form-control-solid mb-3 mb-lg-0" style="background-color: white; border: 1px solid #aea7a7;" placeholder="" value=""/> </div></div> <button type="button" class="btn btn-primary btn-sm" style="border-radius: 30%; margin-bottom: 12px;"id="remove"><i class="fa fa-trash"></button></div>'; 
+
     $(appendData).insertAfter('.insertRowAfter'); 
       });
     });
