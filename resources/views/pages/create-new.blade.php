@@ -111,7 +111,7 @@
    </div>
     <div class="col">
        <label for="" class="form-label editlable">Location</label>
-        <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%; background-color: white; border: 1px solid #aea7a7;" rows="1" cols="1" disabled></textarea>
+        <textarea id="location" name="location" class="form-control form-control form-control-solid" data-kt-autosize="true" style="width:99%; background-color: white; border: 1px solid #aea7a7;" rows="1" cols="1"></textarea>
    </div>
 
     
@@ -224,11 +224,10 @@
              <!--begin::Input-->
             <input type="text" id="amount" name="amount[]" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" style="width:119%; background-color: white; border: 1px solid #aea7a7;"/>
         <!--end::Input-->
+          </div>
+        </div>
     </div>
-   </div>
-
-   </div>
-    <div class="row">
+   <div class="row">
     <div class="fv-row mb-10 col-md-6" id="catfrom" style="display: none;">
         <!--begin::Label-->
         <label class="fw-bold-gray fs-6 mb-2 editlable">From</label>
