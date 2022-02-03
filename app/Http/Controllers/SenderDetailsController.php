@@ -121,7 +121,7 @@ class SenderDetailsController extends Controller
              $cfor->for_company = $request->cfor[$key];
              $cfor->save();
              }else{
-             $c = $request->for[$key];
+             @$c = $request->for[$key];
        } 
       //echo'<pre>'; print_r($c); die;
             $sender = ([
