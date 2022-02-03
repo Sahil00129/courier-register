@@ -115,7 +115,7 @@ class SenderDetailsController extends Controller
        }
 
        foreach($request->catagories as $key => $value){
-             if($request->for[$key] == 'other'){
+             if(@$request->for[$key] == 'other'){
              $c = $request->cfor[$key];
              $cfor = new ForCompany;
              $cfor->for_company = $request->cfor[$key];
@@ -132,7 +132,7 @@ class SenderDetailsController extends Controller
                   'telephone_no' => $telephone_no,
                   'courier_name' => $courier_name,
                   'catagories' => $value,
-                  'for' => $c,
+                  'for' => @$c,
                   'bill' => $request->bill[$key],
                   'amount' => $request->amount[$key],
                   'from' => $request->from[$key],
